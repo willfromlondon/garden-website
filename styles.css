@@ -9,9 +9,9 @@
   --surface-alt: #f1efea;
   --line: rgba(16, 32, 25, 0.14);
   --line-strong: rgba(16, 32, 25, 0.24);
-  --orange: #985c3a;
-  --orange-dark: #7e482e;
-  --orange-soft: #ecddd2;
+  --orange: #bd5124;
+  --orange-dark: #a8421a;
+  --orange-soft: #f3dfd4;
   --green: #3f704f;
   --green-soft: #dfeadf;
   --green-line: rgba(63, 112, 79, 0.24);
@@ -111,10 +111,10 @@ code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
 }
 .button:hover { border-color: rgba(55, 50, 44, 0.36); background: white; transform: translateY(-1px); }
 .button:focus-visible, .arch-node:focus-visible, button:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid rgba(49, 90, 122, 0.28); outline-offset: 3px; }
-.button-primary { color: white; border-color: var(--orange); background: var(--orange); box-shadow: 0 7px 18px rgba(88, 49, 32, 0.17); }
-.button-primary:hover { color: white; border-color: var(--orange-dark); background: var(--orange-dark); box-shadow: 0 10px 22px rgba(88, 49, 32, 0.2); }
-.button-download { color: white; border-color: #bd5124; background: #bd5124; box-shadow: 0 7px 18px rgba(118, 50, 23, 0.17); }
-.button-download:hover { color: white; border-color: #a8421a; background: #a8421a; box-shadow: 0 10px 22px rgba(118, 50, 23, 0.2); }
+.button-primary,
+.button-download { color: white; border-color: var(--orange); background: var(--orange); box-shadow: 0 7px 18px rgba(118, 50, 23, 0.17); }
+.button-primary:hover,
+.button-download:hover { color: white; border-color: var(--orange-dark); background: var(--orange-dark); box-shadow: 0 10px 22px rgba(118, 50, 23, 0.2); }
 .button-small { min-height: 38px; padding-inline: 14px; font-size: 12px; }
 .button-large { min-height: 50px; padding-inline: 20px; font-size: 14px; }
 .button svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -206,7 +206,7 @@ h3 { font-size: 22px; line-height: 1.15; }
 .evidence-card > p { margin: 14px 0; color: #4f6755; font-size: 10px; }
 .evidence-actions { display: flex; gap: 6px; }
 .evidence-actions span { padding: 7px 8px; border: 1px solid rgba(61, 123, 85, 0.2); border-radius: 7px; color: #45634e; background: rgba(255,255,255,0.52); font-size: 9px; font-weight: 700; }
-.evidence-actions span:first-child { color: white; border-color: var(--green); background: var(--green); }
+.evidence-actions span:first-child { color: white; border-color: var(--orange); background: var(--orange); }
 
 .section-heading { margin-bottom: 48px; }
 .split-heading { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.62fr); align-items: end; gap: 80px; }
