@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title desc">
+  <title id="title">Garden Horizons app icon</title>
+  <desc id="desc">The coloured Water to Earth Horizons mark on garden ink.</desc>
+  <rect width="100" height="100" rx="24" fill="#102019"/>
+  <defs>
+    <linearGradient id="icon-rain" x1="17" x2="83" gradientUnits="userSpaceOnUse"><stop stop-color="#4D779B"/><stop offset="1" stop-color="#91B5C5"/></linearGradient>
+    <linearGradient id="icon-plant" x1="17" x2="83" gradientUnits="userSpaceOnUse"><stop stop-color="#4E845D"/><stop offset="1" stop-color="#A0B975"/></linearGradient>
+    <linearGradient id="icon-earth" x1="17" x2="83" gradientUnits="userSpaceOnUse"><stop stop-color="#AF6942"/><stop offset="1" stop-color="#D8AE58"/></linearGradient>
+  </defs>
+  <rect x="17" y="23" width="33" height="12" rx="6" fill="url(#icon-rain)"/><rect x="59" y="23" width="24" height="12" rx="6" fill="url(#icon-rain)"/>
+  <rect x="17" y="44" width="22" height="12" rx="6" fill="url(#icon-plant)"/><rect x="48" y="44" width="35" height="12" rx="6" fill="url(#icon-plant)"/>
+  <rect x="17" y="65" width="38" height="12" rx="6" fill="url(#icon-earth)"/><rect x="64" y="65" width="19" height="12" rx="6" fill="url(#icon-earth)"/>
+</svg>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy information for the Garden website and desktop application.">
+  <meta name="theme-color" content="#f8f7f3">
+  <link rel="icon" href="assets/garden-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Privacy | Garden</title>
+</head>
+<body class="plain-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html"><img src="assets/garden-horizons-mark.svg" alt="" width="38" height="38"><span>Garden</span></a>
+      <a class="button button-small" href="index.html">Back to Garden</a>
+    </div>
+  </header>
+
+  <main id="main" class="privacy-main page-width">
+    <p class="eyebrow">Garden</p>
+    <h1>Privacy</h1>
+    <p class="privacy-intro">This page explains what the Garden website and desktop application do with data.</p>
+
+    <section>
+      <h2>This website</h2>
+      <p>The Garden website does not use analytics, advertising trackers or cookies.</p>
+      <p>When the download page loads, it requests public release information from the GitHub API so it can offer the right installer for your operating system. Your browser makes that request directly to GitHub, subject to <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s privacy statement</a>.</p>
+    </section>
+
+    <section>
+      <h2>The Garden application</h2>
+      <p>Garden stores its project data locally, in the project’s <code>.agentproject/</code> folder by default or in the application data folder if you change that setting.</p>
+      <p>Garden runs the agent providers you configure, including Codex, Claude Code and local models. Requests sent to a hosted provider are handled under that provider’s terms and privacy policy. Local model behaviour depends on the local service you connect.</p>
+    </section>
+
+    <section>
+      <h2>Source code and questions</h2>
+      <p>Garden is open source. You can inspect the code or report a privacy issue through the <a href="https://github.com/willfromlondon/garden">Garden repository on GitHub</a>.</p>
+      <p class="updated">Last updated 31 July 2026.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-width footer-inner">
+      <a class="brand brand-small" href="index.html"><img src="assets/garden-horizons-mark.svg" alt="" width="31" height="31"><span>Garden</span></a>
+      <nav aria-label="Footer navigation"><a href="https://github.com/willfromlondon/garden">GitHub</a><a href="https://github.com/willfromlondon/garden/blob/main/LICENSE">MIT</a><a href="privacy.html" aria-current="page">Privacy</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

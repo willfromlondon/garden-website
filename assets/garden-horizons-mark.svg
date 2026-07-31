@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title desc">
+  <title id="title">Garden Horizons</title>
+  <desc id="desc">Three broken horizons flow across rain, plant, and soil layers.</desc>
+  <defs>
+    <linearGradient id="rain" x1="17" y1="0" x2="83" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#315A7A"/><stop offset="1" stop-color="#7FA5BA"/></linearGradient>
+    <linearGradient id="plant" x1="17" y1="0" x2="83" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#3F704F"/><stop offset="1" stop-color="#8CA86E"/></linearGradient>
+    <linearGradient id="earth" x1="17" y1="0" x2="83" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#985C3A"/><stop offset="1" stop-color="#D0A24B"/></linearGradient>
+  </defs>
+  <rect x="17" y="23" width="33" height="12" rx="6" fill="url(#rain)"/><rect x="59" y="23" width="24" height="12" rx="6" fill="url(#rain)"/>
+  <rect x="17" y="44" width="22" height="12" rx="6" fill="url(#plant)"/><rect x="48" y="44" width="35" height="12" rx="6" fill="url(#plant)"/>
+  <rect x="17" y="65" width="38" height="12" rx="6" fill="url(#earth)"/><rect x="64" y="65" width="19" height="12" rx="6" fill="url(#earth)"/>
+</svg>

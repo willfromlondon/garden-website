@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Garden is a desktop app for building and running software-development agent workflows.">
+  <meta name="theme-color" content="#f8f7f3">
+  <meta property="og:title" content="Garden | Long-horizon agent architecture">
+  <meta property="og:description" content="Compatible with Codex, Claude Code and Local Models">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://garden.engineering/">
+  <link rel="icon" href="assets/garden-icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Garden | Long-horizon agent architecture</title>
+</head>
+<body>
+  <!--
+    THESIS: A Garden run is the homepage; no screenshot gallery or marketing metaphor.
+    OWN-WORLD: Exact app font stack, warm neutral surfaces, orange action, green evidence, typed nodes and thin routes.
+    STORY: Visitor sees request become plan, Arch, evidence, then downloads or checks source.
+    FIRST VIEWPORT: Direct offer and full run sequence, CTA visible.
+    FORM: Run sequence, third composition, seed 86dbd34c.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+  -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="Garden home">
+        <img src="assets/garden-horizons-mark.svg" alt="" width="38" height="38">
+        <span>Garden</span>
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <span class="sr-only">Open menu</span>
+        <span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-nav>
+        <a href="#how-it-works">How it works</a>
+        <a href="#arches">Arches</a>
+        <a href="#download">Download</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://github.com/willfromlondon/garden">GitHub <span aria-hidden="true">↗</span></a>
+        <a class="button button-small button-download" href="https://github.com/willfromlondon/garden/releases" data-download-link>
+          <span data-download-label>Download Garden</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy page-width">
+        <div>
+          <h1 id="hero-title">Garden is designed<br>to help projects grow.</h1>
+        </div>
+        <div class="hero-intro">
+          <p>Garden is a desktop app for building and running software-development agent workflows.</p>
+          <p class="hero-detail">Compatible with Codex, Claude Code and Local Models</p>
+          <div class="hero-actions">
+            <a class="button button-primary button-download" href="https://github.com/willfromlondon/garden/releases" data-download-link>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5M4 15.5h12"/></svg>
+              <span data-download-label>Download Garden</span>
+            </a>
+            <a class="button" href="https://github.com/willfromlondon/garden">View source</a>
+          </div>
+          <p class="release-status" data-release-status aria-live="polite">Available for Windows, macOS and Linux.</p>
+        </div>
+      </div>
+
+      <div class="run-stage page-width" aria-label="A Garden run from request to reviewed result" data-run-stage>
+        <article class="run-card request-card" data-run-step="1">
+          <div class="run-card-label"><span class="step-number">1</span><span>Your request</span></div>
+          <p>Add project export without changing the existing save format.</p>
+        </article>
+
+        <div class="run-connector" aria-hidden="true"><span></span></div>
+
+        <article class="run-card plan-card" data-run-step="2">
+          <div class="card-heading">
+            <span class="card-icon card-icon-orange" aria-hidden="true">
+              <svg viewBox="0 0 20 20"><path d="m5 10 3 3 7-7"/></svg>
+            </span>
+            <div><span class="component-label">Task plan</span><strong>Proposed work</strong></div>
+          </div>
+          <div class="scope-grid">
+            <div><strong>Garden will</strong><span>Add the export action</span><span>Cover the new path</span></div>
+            <div><strong>Garden won’t</strong><span>Change persistence</span><span>Touch unrelated UI</span></div>
+          </div>
+        </article>
+
+        <div class="run-connector" aria-hidden="true"><span></span></div>
+
+        <article class="run-card workflow-card" data-run-step="3">
+          <div class="workflow-heading"><span class="component-label">Closed Loop</span><span>Running</span></div>
+          <div class="mini-flow" aria-label="Start, Primary Agent, Reviewer, User Gate">
+            <div class="mini-node mini-terminal"><span>Start</span></div><i></i>
+            <div class="mini-node mini-agent"><span>Primary Agent</span><small>Codex</small></div><i></i>
+            <div class="mini-node mini-agent"><span>Reviewer</span><small>Claude</small></div><i></i>
+            <div class="mini-node mini-gate"><span>User Gate</span></div>
+          </div>
+        </article>
+
+        <div class="run-connector" aria-hidden="true"><span></span></div>
+
+        <article class="run-card evidence-card" data-run-step="4">
+          <div class="evidence-heading">
+            <span class="card-icon card-icon-green" aria-hidden="true">
+              <svg viewBox="0 0 20 20"><path d="m5 10 3 3 7-7"/></svg>
+            </span>
+            <div><strong>All evidence supports the work</strong><span>3 requested items · 3 supported</span></div>
+          </div>
+          <p>The reviewed candidate is ready for your decision.</p>
+          <div class="evidence-actions"><span>Keep changes</span><span>Bin candidate</span></div>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="section arch-section" id="how-it-works" aria-labelledby="arch-title">
+      <div class="page-width section-heading split-heading">
+        <div>
+          <h2 id="arch-title">Effortlessly build multi-agent workflows.</h2>
+        </div>
+        <p>Connect agents, gates, loops and user decisions. Each agent can use a different model and have a different job.</p>
+      </div>
+
+      <div class="arch-shell page-width">
+        <div class="arch-toolbar">
+          <label class="arch-picker">
+            <span class="sr-only">Choose an included Arch</span>
+            <select class="arch-select" data-arch-select>
+              <option value="closed-loop">Closed Loop</option>
+              <option value="quick-pass">Quick Pass</option>
+              <option value="deep-cycle">Deep Cycle</option>
+              <option value="independent-synthesis">Independent Synthesis</option>
+            </select>
+            <span data-arch-label>Default Arch</span>
+          </label>
+          <span class="arch-ready"><i></i> Ready for a task</span>
+          <span class="toolbar-button">Edit Arch</span>
+        </div>
+
+        <div class="arch-workspace" data-arch-workspace>
+          <svg class="arch-routes" aria-hidden="true"></svg>
+          <div class="arch-node-layer"></div>
+        </div>
+
+        <div class="arch-inspector" aria-live="polite">
+          <span class="component-label" data-inspector-kind>Start</span>
+          <strong data-inspector-title>Start</strong>
+          <p data-inspector-copy>Receives the approved task plan and begins the Arch.</p>
+          <span class="inspector-hint">Select a node to inspect it.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section planning-section" aria-labelledby="planning-title">
+      <div class="page-width planning-layout">
+        <div class="section-copy">
+          <h2 id="planning-title">AI-Powered task generation to streamline agent work.</h2>
+          <p>Garden turns the request into a concrete plan with boundaries. You can revise it before any agent starts work.</p>
+          <p>This gives the workflow a clear definition of done and makes unrelated work easier to spot.</p>
+        </div>
+
+        <div class="task-plan-large" aria-label="Example task plan">
+          <div class="task-plan-header">
+            <span class="card-icon card-icon-orange" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10 3 3 7-7"/></svg></span>
+            <div><span class="component-label">Task plan</span><strong>Review before execution</strong></div>
+            <span class="plan-status">Ready</span>
+          </div>
+          <div class="plan-request"><span>Request</span><p>Add project export without changing the existing save format.</p></div>
+          <div class="scope-grid scope-grid-large">
+            <div>
+              <strong><i class="scope-dot scope-dot-green"></i> Garden will</strong>
+              <span>Add an export action to the project menu.</span>
+              <span>Write the current project to a chosen folder.</span>
+              <span>Test the new export path.</span>
+            </div>
+            <div>
+              <strong><i class="scope-dot scope-dot-grey"></i> Garden won’t</strong>
+              <span>Change the existing save format.</span>
+              <span>Replace the current project picker.</span>
+              <span>Refactor unrelated application code.</span>
+            </div>
+          </div>
+          <div class="plan-footer"><span>6 criteria</span><span>2 boundaries</span><span>Estimated: focused change</span><span class="plan-button">Start task</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section evidence-section" aria-labelledby="evidence-title">
+      <div class="page-width section-heading split-heading">
+        <div>
+          <h2 id="evidence-title">Easily see what was achieved.</h2>
+        </div>
+        <p>Garden records the evidence, changed files, model usage and completed nodes.</p>
+      </div>
+
+      <div class="evidence-workspace page-width">
+        <article class="result-panel">
+          <div class="result-summary">
+            <span class="card-icon card-icon-green" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="m5 10 3 3 7-7"/></svg></span>
+            <div><span class="component-label">Completed</span><h3>All evidence supports the work</h3><p>3 requested items · 3 supported</p></div>
+          </div>
+          <div class="criteria-list">
+            <div><span class="supported">Supported</span><p><strong>The export action is available from the project menu.</strong><span>The application exposes the new action without moving the existing controls.</span></p></div>
+            <div><span class="supported">Supported</span><p><strong>The current save format remains unchanged.</strong><span>Existing project files open and save with the same schema.</span></p></div>
+            <div><span class="supported">Supported</span><p><strong>The new path is covered by tests.</strong><span>Export tests and the existing suite pass.</span></p></div>
+          </div>
+          <p class="result-note">The reviewed changes are ready in candidate staging.</p>
+          <div class="result-actions"><span class="button button-primary">Keep changes</span><span class="button">Bin candidate</span><span class="button button-quiet">Undo</span></div>
+        </article>
+
+        <article class="project-panel">
+          <div class="project-toolbar"><div><span class="component-label">Project structure</span><strong>Project graph</strong></div><span class="watching"><i></i> Watching</span><span class="file-tally">7 files · <b>+84</b> <em>−17</em> · 9 dependencies</span></div>
+          <div class="file-grove" aria-label="Project files and their dependencies">
+            <svg viewBox="0 0 760 360" role="img" aria-labelledby="grove-title grove-description">
+              <title id="grove-title">Garden project grove</title>
+              <desc id="grove-description">Seven project files shown as structural trees, with changed units on their branches and dependency arrows beneath the ground line.</desc>
+              <defs>
+                <marker id="dependency-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse">
+                  <path d="M1 1 7 4 1 7"/>
+                </marker>
+              </defs>
+
+              <path class="grove-ground" d="M18 278H742"/>
+              <g class="grove-dependencies">
+                <path d="M60 278C60 322 218 322 265 278"/>
+                <path d="M160 278C160 311 235 311 265 278"/>
+                <path d="M265 278C265 327 425 327 480 278"/>
+                <path d="M375 278C375 314 445 314 480 278"/>
+                <path d="M480 278C480 326 650 326 690 278"/>
+                <path d="M590 278C590 307 663 307 690 278"/>
+              </g>
+
+              <g class="grove-tree">
+                <text class="grove-label" x="60" y="24" text-anchor="middle">project.ts</text>
+                <line class="grove-label-leader" x1="60" y1="31" x2="60" y2="92"/>
+                <line class="grove-spine" x1="60" y1="98" x2="60" y2="278"/>
+                <circle class="grove-apex" cx="60" cy="98" r="3"/><circle class="grove-base" cx="60" cy="278" r="5.5"/>
+                <path class="grove-branch mark-sage" d="M60 119H46V115H39"/><circle class="grove-joint mark-sage" cx="46" cy="119" r="1.6"/><circle class="grove-dot mark-sage" cx="39" cy="115" r="2.2"/>
+                <path class="grove-branch mark-growth" d="M60 141H74"/><circle class="grove-dot mark-growth" cx="74" cy="141" r="2.3"/>
+                <path class="grove-branch mark-blue" d="M60 166H43V172H35"/><circle class="grove-joint mark-blue" cx="43" cy="166" r="1.6"/><rect class="grove-box mark-blue" x="31" y="168" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-dark" d="M60 194H78"/><circle class="grove-dot mark-dark" cx="78" cy="194" r="2.3"/>
+                <path class="grove-branch mark-growth" d="M60 221H44"/><circle class="grove-dot mark-growth" cx="44" cy="221" r="2.2"/>
+                <path class="grove-branch mark-sage" d="M60 246H72V241H80"/><circle class="grove-joint mark-sage" cx="72" cy="246" r="1.6"/><circle class="grove-dot mark-sage" cx="80" cy="241" r="2.1"/>
+              </g>
+
+              <g class="grove-tree kind-added">
+                <text class="grove-label" x="160" y="43" text-anchor="middle">export.ts</text>
+                <line class="grove-label-leader" x1="160" y1="50" x2="160" y2="116"/>
+                <line class="grove-spine" x1="160" y1="122" x2="160" y2="278"/>
+                <circle class="grove-apex" cx="160" cy="122" r="3"/><circle class="grove-base" cx="160" cy="278" r="5.5"/>
+                <path class="grove-branch mark-growth" d="M160 151H143"/><rect class="grove-box mark-growth" x="139" y="147" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-growth" d="M160 182H177V177H184"/><circle class="grove-joint mark-growth" cx="177" cy="182" r="1.6"/><rect class="grove-box mark-growth" x="180" y="173" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-growth" d="M160 216H146V222H137"/><circle class="grove-joint mark-growth" cx="146" cy="216" r="1.6"/><circle class="grove-dot mark-growth" cx="137" cy="222" r="2.3"/>
+                <path class="grove-branch mark-growth" d="M160 248H174"/><circle class="grove-dot mark-growth" cx="174" cy="248" r="2.2"/>
+              </g>
+
+              <g class="grove-tree">
+                <text class="grove-label" x="265" y="20" text-anchor="middle">commands.rs</text>
+                <line class="grove-label-leader" x1="265" y1="27" x2="265" y2="82"/>
+                <line class="grove-spine" x1="265" y1="88" x2="265" y2="278"/>
+                <circle class="grove-apex" cx="265" cy="88" r="3"/><circle class="grove-base" cx="265" cy="278" r="5.5"/>
+                <path class="grove-branch mark-dark" d="M265 109H247V104H238"/><circle class="grove-joint mark-dark" cx="247" cy="109" r="1.6"/><rect class="grove-box mark-dark" x="233" y="99" width="10" height="10" rx="1"/>
+                <path class="grove-branch mark-sage" d="M265 129H283"/><rect class="grove-box mark-sage" x="279" y="125" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-blue" d="M265 151H247V157H238"/><circle class="grove-joint mark-blue" cx="247" cy="151" r="1.6"/><rect class="grove-box mark-blue" x="233" y="152" width="10" height="10" rx="1"/>
+                <path class="grove-branch mark-dark" d="M265 174H286V168H294"/><circle class="grove-joint mark-dark" cx="286" cy="174" r="1.6"/><rect class="grove-box mark-dark" x="290" y="164" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-growth" d="M265 198H244"/><circle class="grove-dot mark-growth" cx="244" cy="198" r="2.4"/>
+                <path class="grove-branch mark-dark" d="M265 221H282V227H291"/><circle class="grove-joint mark-dark" cx="282" cy="221" r="1.6"/><rect class="grove-box mark-dark" x="286" y="222" width="10" height="10" rx="1"/>
+                <path class="grove-branch mark-sage" d="M265 247H248"/><circle class="grove-dot mark-sage" cx="248" cy="247" r="2.2"/>
+              </g>
+
+              <g class="grove-tree">
+                <text class="grove-label" x="375" y="55" text-anchor="middle">menu.ts</text>
+                <line class="grove-label-leader" x1="375" y1="62" x2="375" y2="127"/>
+                <line class="grove-spine" x1="375" y1="133" x2="375" y2="278"/>
+                <circle class="grove-apex" cx="375" cy="133" r="3"/><circle class="grove-base" cx="375" cy="278" r="5.5"/>
+                <path class="grove-branch mark-growth" d="M375 158H359V164H351"/><circle class="grove-joint mark-growth" cx="359" cy="158" r="1.6"/><rect class="grove-box mark-growth" x="347" y="160" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-sage" d="M375 186H392"/><circle class="grove-dot mark-sage" cx="392" cy="186" r="2.3"/>
+                <path class="grove-branch mark-blue" d="M375 218H357"/><rect class="grove-box mark-blue" x="353" y="214" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-dark" d="M375 248H390V243H397"/><circle class="grove-joint mark-dark" cx="390" cy="248" r="1.6"/><circle class="grove-dot mark-dark" cx="397" cy="243" r="2.2"/>
+              </g>
+
+              <g class="grove-tree kind-added">
+                <text class="grove-label" x="480" y="33" text-anchor="middle">export.test.ts</text>
+                <line class="grove-label-leader" x1="480" y1="40" x2="480" y2="105"/>
+                <line class="grove-spine" x1="480" y1="111" x2="480" y2="278"/>
+                <circle class="grove-apex" cx="480" cy="111" r="3"/><circle class="grove-base" cx="480" cy="278" r="5.5"/>
+                <path class="grove-branch mark-growth" d="M480 132H459V127H450"/><circle class="grove-joint mark-growth" cx="459" cy="132" r="1.6"/><rect class="grove-box mark-growth" x="445" y="122" width="10" height="10" rx="1"/>
+                <path class="grove-branch mark-growth" d="M480 154H501"/><rect class="grove-box mark-growth" x="497" y="150" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-growth" d="M480 177H461V183H452"/><circle class="grove-joint mark-growth" cx="461" cy="177" r="1.6"/><rect class="grove-box mark-growth" x="447" y="178" width="10" height="10" rx="1"/>
+                <path class="grove-branch mark-growth" d="M480 201H503V195H511"/><circle class="grove-joint mark-growth" cx="503" cy="201" r="1.6"/><rect class="grove-box mark-growth" x="507" y="191" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-growth" d="M480 225H458"/><rect class="grove-box mark-growth" x="454" y="221" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-growth" d="M480 248H499V254H508"/><circle class="grove-joint mark-growth" cx="499" cy="248" r="1.6"/><rect class="grove-box mark-growth" x="503" y="249" width="10" height="10" rx="1"/>
+              </g>
+
+              <g class="grove-tree">
+                <text class="grove-label" x="590" y="20" text-anchor="middle">Cargo.toml</text>
+                <line class="grove-label-leader" x1="590" y1="27" x2="590" y2="94"/>
+                <line class="grove-spine" x1="590" y1="100" x2="590" y2="278"/>
+                <circle class="grove-apex" cx="590" cy="100" r="3"/><circle class="grove-base" cx="590" cy="278" r="5.5"/>
+                <path class="grove-branch mark-dark" d="M590 124H574"/><circle class="grove-dot mark-dark" cx="574" cy="124" r="2.3"/>
+                <path class="grove-branch mark-sage" d="M590 149H608V144H616"/><circle class="grove-joint mark-sage" cx="608" cy="149" r="1.6"/><circle class="grove-dot mark-sage" cx="616" cy="144" r="2.2"/>
+                <path class="grove-branch mark-blue" d="M590 174H570V180H562"/><circle class="grove-joint mark-blue" cx="570" cy="174" r="1.6"/><rect class="grove-box mark-blue" x="558" y="176" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-dark" d="M590 202H612"/><circle class="grove-dot mark-dark" cx="612" cy="202" r="2.3"/>
+                <path class="grove-branch mark-growth" d="M590 228H574"/><circle class="grove-dot mark-growth" cx="574" cy="228" r="2.2"/>
+                <path class="grove-branch mark-sage" d="M590 250H607"/><circle class="grove-dot mark-sage" cx="607" cy="250" r="2.2"/>
+              </g>
+
+              <g class="grove-tree">
+                <text class="grove-label" x="690" y="43" text-anchor="middle">lib.rs</text>
+                <line class="grove-label-leader" x1="690" y1="50" x2="690" y2="114"/>
+                <line class="grove-spine" x1="690" y1="120" x2="690" y2="278"/>
+                <circle class="grove-apex" cx="690" cy="120" r="3"/><circle class="grove-base" cx="690" cy="278" r="5.5"/>
+                <path class="grove-branch mark-dark" d="M690 139H671V134H662"/><circle class="grove-joint mark-dark" cx="671" cy="139" r="1.6"/><rect class="grove-box mark-dark" x="657" y="129" width="10" height="10" rx="1"/>
+                <path class="grove-branch mark-sage" d="M690 158H708"/><circle class="grove-dot mark-sage" cx="708" cy="158" r="2.3"/>
+                <path class="grove-branch mark-blue" d="M690 179H670"/><rect class="grove-box mark-blue" x="666" y="175" width="8" height="8" rx="1"/>
+                <path class="grove-branch mark-growth" d="M690 200H711V195H719"/><circle class="grove-joint mark-growth" cx="711" cy="200" r="1.6"/><circle class="grove-dot mark-growth" cx="719" cy="195" r="2.2"/>
+                <path class="grove-branch mark-dark" d="M690 221H668V227H659"/><circle class="grove-joint mark-dark" cx="668" cy="221" r="1.6"/><rect class="grove-box mark-dark" x="654" y="222" width="10" height="10" rx="1"/>
+                <path class="grove-branch mark-sage" d="M690 244H709"/><circle class="grove-dot mark-sage" cx="709" cy="244" r="2.3"/>
+                <path class="grove-branch mark-dark" d="M690 263H673"/><rect class="grove-box mark-dark" x="669" y="259" width="8" height="8" rx="1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="project-legend"><span><i class="legend-base"></i> file structure</span><span><i class="legend-added"></i> added</span><span><i class="legend-removed"></i> removed</span><span><i class="legend-route"></i> dependency flow</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section typical-section" aria-labelledby="typical-title">
+      <div class="page-width typical-layout">
+        <div class="section-copy">
+          <h2 id="typical-title">Roll back any work you aren't happy with.</h2>
+        </div>
+        <ol class="run-list">
+          <li><span>01</span><div><strong>Open a project</strong><p>Select a folder and choose an Arch.</p></div></li>
+          <li><span>02</span><div><strong>Describe the task</strong><p>Garden proposes criteria and boundaries for you to review.</p></div></li>
+          <li><span>03</span><div><strong>Run the Arch</strong><p>The agents build, review, repair and stop for your input when needed.</p></div></li>
+          <li><span>04</span><div><strong>Inspect the result</strong><p>Read the evidence and changed files before accepting anything.</p></div></li>
+          <li><span>05</span><div><strong>Keep or bin it</strong><p>Apply the candidate to the project, discard it, or undo your last choice.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section arches-section" id="arches" aria-labelledby="arches-title">
+      <div class="page-width section-heading split-heading">
+        <div>
+          <h2 id="arches-title">Start with a workflow that fits the task.</h2>
+        </div>
+        <p>Use an included Arch or draw your own. Arches can be saved and shared as <code>.arch.md</code> files.</p>
+      </div>
+
+      <div class="arch-list page-width">
+        <article class="arch-option arch-option-featured">
+          <div class="arch-option-name"><span class="option-index">01</span><div><h3>Closed Loop</h3><span>Default</span></div></div>
+          <p>Builds, reviews, repairs and rechecks using either one model or a combination of models. It asks for your judgement if the agents still disagree.</p>
+          <svg class="arch-glyph" viewBox="0 0 300 74" aria-hidden="true" focusable="false">
+            <g class="glyph-routes">
+              <path d="M16 17H28"/><path d="M44 17H56"/><path d="M72 17H84"/><path d="M100 17H284"/>
+              <path d="M100 17C108 17 104 49 114 49"/><path d="M130 49H142"/><path d="M158 49H170"/><path d="M186 49H194"/>
+              <path d="M186 49C220 49 250 17 284 17"/>
+              <path d="M212 49C216 49 216 37 222 37"/><path d="M212 49C216 49 216 61 222 61"/>
+              <path d="M238 37H248"/><path d="M238 61H248"/>
+              <path d="M264 37C274 37 274 17 284 17"/><path d="M264 61C278 61 278 17 284 17"/>
+            </g>
+            <rect class="glyph-node glyph-terminal" x="2" y="12" width="14" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="28" y="12" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="56" y="12" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-gate" x="84" y="12" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="114" y="44" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="142" y="44" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-gate" x="170" y="44" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-human" x="194" y="44" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="222" y="32" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="222" y="56" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="248" y="32" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="248" y="56" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-terminal" x="284" y="12" width="14" height="10" rx="2"/>
+          </svg>
+        </article>
+        <article class="arch-option">
+          <div class="arch-option-name"><span class="option-index">02</span><h3>Quick Pass</h3></div>
+          <p>Runs a builder followed by one focused correction pass.</p>
+          <svg class="arch-glyph" viewBox="0 0 300 74" aria-hidden="true" focusable="false">
+            <g class="glyph-routes"><path d="M76 37H112"/><path d="M130 37H168"/><path d="M186 37H224"/></g>
+            <rect class="glyph-node glyph-terminal" x="60" y="32" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="112" y="32" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="168" y="32" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-terminal" x="224" y="32" width="16" height="10" rx="2"/>
+          </svg>
+        </article>
+        <article class="arch-option">
+          <div class="arch-option-name"><span class="option-index">03</span><h3>Deep Cycle</h3></div>
+          <p>Runs a bounded builder and critic loop. It uses more tokens, but requires multiple agents to agree before proceeding.</p>
+          <svg class="arch-glyph" viewBox="0 0 300 74" aria-hidden="true" focusable="false">
+            <g class="glyph-routes">
+              <path d="M18 18H34"/><path d="M50 18H70"/><path d="M88 18H106"/><path d="M124 18H142"/><path d="M160 18H282"/>
+              <path d="M150 23C150 42 84 42 79 23" class="glyph-loopback"/>
+              <path d="M42 23V52H180"/><path d="M198 52H220"/><path d="M238 52C258 52 266 18 282 18"/>
+            </g>
+            <rect class="glyph-node glyph-terminal" x="4" y="13" width="14" height="10" rx="2"/>
+            <rect class="glyph-node glyph-loop" x="34" y="13" width="16" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="70" y="13" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="106" y="13" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-gate" x="142" y="13" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-human" x="180" y="47" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="220" y="47" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-terminal" x="282" y="13" width="16" height="10" rx="2"/>
+          </svg>
+        </article>
+        <article class="arch-option">
+          <div class="arch-option-name"><span class="option-index">04</span><h3>Independent Synthesis</h3></div>
+          <p>Creates two independent proposals, reconciles them with an agent judge and reviews the result.</p>
+          <svg class="arch-glyph" viewBox="0 0 300 74" aria-hidden="true" focusable="false">
+            <g class="glyph-routes">
+              <path d="M18 37C28 37 30 14 48 14"/><path d="M18 37C28 37 30 60 48 60"/>
+              <path d="M66 14C80 14 80 37 94 37"/><path d="M66 60C80 60 80 37 94 37"/>
+              <path d="M112 37H128"/><path d="M146 37H162"/><path d="M180 37H196"/><path d="M214 37H282"/>
+              <path d="M214 37C222 37 220 59 232 59"/><path d="M250 59C266 59 268 37 282 37"/>
+            </g>
+            <rect class="glyph-node glyph-terminal" x="4" y="32" width="14" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="48" y="9" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="48" y="55" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-join" x="94" y="32" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="128" y="32" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="162" y="32" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-gate" x="196" y="32" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-agent" x="232" y="54" width="18" height="10" rx="2"/>
+            <rect class="glyph-node glyph-terminal" x="282" y="32" width="16" height="10" rx="2"/>
+          </svg>
+        </article>
+      </div>
+
+      <div class="arch-library" data-arch-library>
+        <div class="arch-library-heading">
+          <div>
+            <h3>Share your workflow, or download a new one.</h3>
+            <p>Create or download any workflow that works for your needs.</p>
+          </div>
+          <div class="arch-library-actions">
+            <button class="arch-marquee-toggle" type="button" data-arch-marquee-toggle aria-pressed="false">Pause movement</button>
+            <a class="arch-library-all" href="https://github.com/willfromlondon/garden-arches">Browse all on GitHub</a>
+          </div>
+        </div>
+
+        <div class="arch-marquee" data-arch-marquee role="region" aria-label="Garden workflow library">
+          <div class="arch-marquee-row" data-arch-marquee-row>
+            <div class="arch-marquee-group">
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/plan-approval">
+                <span class="arch-kind">User gate</span><h4>Plan Approval</h4><p>Agree the approach before implementation begins.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H52H90H128H166H204H286"/><path d="M166 41C181 41 181 66 204 66H248C263 66 263 41 286 41"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="44" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-human" x="82" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="120" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="158" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-gate" x="196" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="220" y="60" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/test-first-change">
+                <span class="arch-kind">Test first</span><h4>Test-First Change</h4><p>Define failure cases before changing the code.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H54H94H134H174H214H286"/><path d="M214 41C229 41 229 65 246 65S263 41 286 41"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="46" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="86" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="126" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="166" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-gate" x="206" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="238" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/security-hardening">
+                <span class="arch-kind">Security review</span><h4>Security Hardening</h4><p>Challenge trust boundaries, repair, then recheck.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H62H110H158H206H286"/><path d="M158 41C173 41 173 65 198 65H238C258 65 258 41 286 41"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="54" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="102" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-gate" x="150" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="190" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="230" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/dependency-upgrade">
+                <span class="arch-kind">Migration</span><h4>Dependency Upgrade</h4><p>Map compatibility risks before upgrading.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H58H102H146H190H234H286"/><path d="M190 41C205 41 205 65 232 65S258 41 286 41"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="50" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="94" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="138" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-gate" x="182" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="224" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/bug-reproduction">
+                <span class="arch-kind">Diagnosis first</span><h4>Bug Reproduction</h4><p>Prove the fault before making a narrow repair.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H54H94H134H174H214H286"/><path d="M214 41C229 41 229 65 246 65S263 41 286 41"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="46" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="86" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="126" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="166" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-gate" x="206" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="238" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="arch-marquee-row arch-marquee-row-reverse" data-arch-marquee-row>
+            <div class="arch-marquee-group">
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/parallel-review">
+                <span class="arch-kind">Parallel review</span><h4>Parallel Review</h4><p>Run correctness and security reviews together.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H58C74 41 74 17 96 17H132C152 17 152 41 174 41H220H286"/><path d="M58 41C74 41 74 65 96 65H132C152 65 152 41 174 41"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="50" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="88" y="11" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="88" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-join" x="166" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="212" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/release-approval">
+                <span class="arch-kind">User gate</span><h4>Release Approval</h4><p>Review a release candidate before shipping it.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H54H94H134H174H214H286"/><path d="M134 41C149 41 149 65 174 65S199 41 214 41"/><path d="M214 41C231 41 231 65 250 65S269 41 286 41"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="46" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="86" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-gate" x="126" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="166" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-human" x="206" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="242" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/documentation-sync">
+                <span class="arch-kind">Documentation</span><h4>Documentation Sync</h4><p>Check documentation against the changed code.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H58H102H146H190H286"/><path d="M190 41C205 41 205 65 232 65S258 41 286 41"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="50" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="94" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="138" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-gate" x="182" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="224" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/regression-loop">
+                <span class="arch-kind">Bounded loop</span><h4>Regression Loop</h4><p>Repeat repair and review within a firm limit.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H54H94H134H174H214H286"/><path class="glyph-loopback" d="M214 41C214 8 94 8 94 41"/><path d="M54 41C69 41 69 65 94 65H214C239 65 239 41 286 41"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-loop" x="46" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="86" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="126" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-gate" x="166" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-human" x="86" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="206" y="59" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+              <a class="arch-library-tile" href="https://github.com/willfromlondon/garden-arches/tree/main/minimal-patch">
+                <span class="arch-kind">Focused repair</span><h4>Minimal Patch</h4><p>Investigate, patch once, then review once.</p>
+                <svg class="arch-tile-glyph" viewBox="0 0 300 82" aria-hidden="true"><g class="glyph-routes"><path d="M14 41H76H138H200H286"/></g><rect class="glyph-node glyph-terminal" x="6" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="68" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="130" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-agent" x="192" y="35" width="16" height="12" rx="2"/><rect class="glyph-node glyph-terminal" x="278" y="35" width="16" height="12" rx="2"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section download-section" id="download" aria-labelledby="download-title">
+      <div class="download-panel page-width">
+        <div class="download-copy">
+          <p class="eyebrow">Open source · MIT</p>
+          <h2 id="download-title">Download Garden.</h2>
+          <p>Use Codex, Claude Code or local models in a desktop workflow you can inspect and edit.</p>
+          <a class="button button-primary button-large button-download" href="https://github.com/willfromlondon/garden/releases" data-download-link>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5M4 15.5h12"/></svg>
+            <span data-download-label>Download Garden</span>
+          </a>
+          <p class="download-note" data-release-status>Available for Windows, macOS and Linux.</p>
+        </div>
+
+        <div class="install-box">
+          <div class="install-tabs" role="tablist" aria-label="Install command operating system">
+            <button type="button" role="tab" aria-selected="true" aria-controls="windows-command" id="windows-tab" data-command-tab="windows">Windows</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="unix-command" id="unix-tab" data-command-tab="unix">macOS / Linux</button>
+          </div>
+          <div class="command-panel" id="windows-command" role="tabpanel" aria-labelledby="windows-tab" data-command-panel="windows">
+            <p>Install from PowerShell:</p>
+            <div class="command-row"><code>irm https://garden.engineering/install.ps1 | iex</code><button type="button" data-copy-command aria-label="Copy Windows install command">Copy</button></div>
+          </div>
+          <div class="command-panel" id="unix-command" role="tabpanel" aria-labelledby="unix-tab" data-command-panel="unix" hidden>
+            <p>Install from a terminal:</p>
+            <div class="command-row"><code>curl -fsSL https://garden.engineering/install.sh | sh</code><button type="button" data-copy-command aria-label="Copy macOS or Linux install command">Copy</button></div>
+          </div>
+          <p class="install-disclosure">The installer downloads the latest matching asset from the project’s GitHub Releases page.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="page-width faq-layout">
+        <div class="section-copy"><p class="eyebrow">FAQ</p><h2 id="faq-title">Questions about Garden.</h2></div>
+        <div class="faq-list">
+          <details><summary>What is Garden?</summary><p>Garden is a desktop agent harness for long-horizon software-development tasks. You build a workflow as an Arch, run it against a project, inspect the result and decide whether to keep the staged changes.</p></details>
+          <details><summary>Which agents can I use?</summary><p>Garden supports Codex, Claude Code and local models. Different nodes in the same Arch can use different agents.</p></details>
+          <details><summary>Does Garden overwrite my project while agents work?</summary><p>No. Agent edits are kept in candidate staging. You decide when a candidate is applied to the project, binned or undone.</p></details>
+          <details><summary>Where is project data stored?</summary><p>Project data is stored in <code>.agentproject/</code> by default. You can change the setting to use the application data folder instead.</p></details>
+          <details><summary>Is Garden free?</summary><p>Yes. Garden is open source under the MIT License. The model providers you use may charge for their own services.</p></details>
+          <details><summary>Does this website use analytics?</summary><p>No. This site does not use analytics, advertising trackers or cookies. Read the <a href="privacy.html">privacy page</a> for the details.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-width footer-inner">
+      <a class="brand brand-small" href="#top"><img src="assets/garden-horizons-mark.svg" alt="" width="31" height="31"><span>Garden</span></a>
+      <p>Long-horizon agent architecture.</p>
+      <nav aria-label="Footer navigation"><a href="https://github.com/willfromlondon/garden">GitHub</a><a href="https://github.com/willfromlondon/garden/blob/main/LICENSE">MIT</a><a href="privacy.html">Privacy</a></nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
