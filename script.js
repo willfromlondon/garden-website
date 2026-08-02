@@ -340,6 +340,44 @@ function configureRunAnimation() {
   observer.observe(stage);
 }
 
+function configureHeroGrowth() {
+  const word = document.querySelector("[data-growing-word]");
+  if (!word || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const drawDuration = 4200;
+  const stemDelays = [...word.querySelectorAll(".growth-stem")].map((stem, index) => {
+    const delay = Math.round(index * 70 + Math.random() * 90);
+    stem.style.setProperty("--stem-delay", `${delay}ms`);
+    return delay;
+  });
+  word.querySelectorAll(".growth-branch").forEach((branch) => {
+    const stemIndex = Number.parseInt(branch.dataset.growthStem, 10);
+    const progress = Number.parseFloat(branch.dataset.growthAt);
+    const branchDelay = Math.round((stemDelays[stemIndex] ?? 0) + progress * drawDuration - 120 + Math.random() * 80);
+    branch.style.setProperty("--branch-delay", `${branchDelay}ms`);
+  });
+  word.querySelectorAll(".growth-leaf").forEach((leaf) => {
+    const stemIndex = Number.parseInt(leaf.dataset.growthStem, 10);
+    const progress = Number.parseFloat(leaf.dataset.growthAt);
+    const bloomDelay = Math.round((stemDelays[stemIndex] ?? 0) + progress * drawDuration + 520 + Math.random() * 120);
+    leaf.style.setProperty("--bloom-delay", `${bloomDelay}ms`);
+    leaf.style.setProperty("--vein-delay", `${bloomDelay + 130}ms`);
+  });
+  word.querySelectorAll("[data-growth-optional]").forEach((leaf) => {
+    leaf.classList.toggle("is-dormant", Math.random() < 0.28);
+  });
+  word.querySelectorAll(".growth-flower").forEach((flower) => {
+    const stemIndex = Number.parseInt(flower.dataset.growthStem, 10);
+    const bloomDelay = Math.round((stemDelays[stemIndex] ?? 0) + drawDuration - 100 + Math.random() * 180);
+    flower.style.setProperty("--bloom-delay", `${bloomDelay}ms`);
+  });
+
+  word.classList.add("can-grow");
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => word.classList.add("is-growing"));
+  });
+}
+
 function configureStickyHeader() {
   const header = document.querySelector("[data-header]");
   if (!header) return;
@@ -385,6 +423,7 @@ function configureArchMarquee() {
 configureMenu();
 configureArchDemo();
 configureCommandTabs();
+configureHeroGrowth();
 configureRunAnimation();
 configureStickyHeader();
 configureArchMarquee();

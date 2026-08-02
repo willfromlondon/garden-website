@@ -136,6 +136,7 @@ h3 { font-size: 22px; line-height: 1.15; }
 
 .hero {
   overflow: hidden;
+  isolation: isolate;
   padding: 100px 0 34px;
   background:
     radial-gradient(circle at 82% 7%, rgba(49, 90, 122, 0.07), transparent 28%),
@@ -143,6 +144,34 @@ h3 { font-size: 22px; line-height: 1.15; }
 }
 .hero-copy { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.72fr); align-items: end; gap: 80px; }
 .hero-copy h1 { max-width: 830px; font-size: clamp(50px, 4.9vw, 72px); }
+.growing-word { position: relative; display: inline-block; }
+.growing-word-text { position: relative; }
+.growth-drawing { position: absolute; z-index: -1; left: -16%; top: -47%; width: 132%; height: 190%; overflow: visible; pointer-events: none; }
+.growth-stem, .growth-branch, .growth-leaf path, .growth-flower circle { vector-effect: non-scaling-stroke; }
+.growth-stem { fill: none; stroke: #82947f; stroke-width: 0.9; stroke-linecap: round; stroke-linejoin: round; opacity: 0.88; }
+.growth-branch { fill: none; stroke: #879884; stroke-width: 0.68; stroke-linecap: round; stroke-linejoin: round; opacity: 0.78; }
+.growth-leaf-petiole { fill: none; stroke: #879884; stroke-width: 0.58; stroke-linecap: round; }
+.growth-leaf-shape { fill: rgba(135, 152, 132, 0.18); stroke: #879884; stroke-width: 0.74; stroke-linejoin: round; }
+.growth-leaf-vein { fill: none; stroke: #879884; stroke-width: 0.42; stroke-linecap: round; opacity: 0.7; }
+.growth-leaf.is-dormant { display: none; }
+.growth-flower { --flower-color: #b47f68; }
+.growth-flower circle { fill: rgba(248, 247, 243, 0.86); stroke: var(--flower-color); stroke-width: 0.75; }
+.growth-flower .flower-centre { fill: #c2a263; stroke: none; }
+.growing-word.can-grow .growth-stem { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.growing-word.can-grow .growth-branch { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.growing-word.can-grow .growth-bloom { opacity: 0; }
+.growing-word.can-grow .growth-leaf-petiole { opacity: 0; }
+.growing-word.can-grow .growth-leaf-shape { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.2); }
+.growing-word.can-grow .growth-leaf-vein { opacity: 0; }
+.growing-word.is-growing .growth-stem { animation: growth-draw 4200ms cubic-bezier(0.16, 1, 0.3, 1) var(--stem-delay, 0ms) forwards; }
+.growing-word.is-growing .growth-branch { animation: growth-draw 900ms cubic-bezier(0.16, 1, 0.3, 1) var(--branch-delay, 0ms) forwards; }
+.growing-word.is-growing .growth-leaf-petiole { animation: growth-flower-open 280ms ease-out var(--bloom-delay) forwards; }
+.growing-word.is-growing .growth-leaf-shape { animation: growth-bloom 620ms cubic-bezier(0.16, 1, 0.3, 1) var(--bloom-delay) forwards; }
+.growing-word.is-growing .growth-leaf-vein { animation: growth-flower-open 360ms ease-out var(--vein-delay) forwards; }
+.growing-word.is-growing .growth-flower { animation: growth-flower-open 720ms cubic-bezier(0.16, 1, 0.3, 1) var(--bloom-delay) forwards; }
+@keyframes growth-draw { to { stroke-dashoffset: 0; } }
+@keyframes growth-bloom { to { opacity: 1; transform: scale(1); } }
+@keyframes growth-flower-open { to { opacity: 1; } }
 .hero-intro > p:first-child { margin: 0; color: var(--ink); font-size: 20px; line-height: 1.45; letter-spacing: -0.012em; }
 .hero-detail { margin: 14px 0 24px; color: var(--muted); font-size: 15px; }
 .hero-actions { display: flex; gap: 9px; align-items: center; }
@@ -516,6 +545,7 @@ h3 { font-size: 22px; line-height: 1.15; }
   .section { padding: 72px 0; }
   h1 { font-size: clamp(45px, 13vw, 62px); }
   .hero-copy h1 { font-size: clamp(43px, 12vw, 54px); }
+  .growth-drawing { left: -12%; width: 124%; }
   h2 { font-size: clamp(37px, 10vw, 49px); }
   .brand { font-size: 19px; }
   .brand img { width: 35px; height: 35px; }
@@ -581,4 +611,10 @@ h3 { font-size: 22px; line-height: 1.15; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .run-stage.can-animate [data-run-step] { opacity: 1; transform: none; }
   .arch-marquee-toggle { display: none; }
+  .growing-word .growth-stem { stroke-dashoffset: 0; }
+  .growing-word .growth-branch { stroke-dashoffset: 0; }
+  .growing-word .growth-bloom { opacity: 1; }
+  .growing-word .growth-leaf-petiole { opacity: 1; }
+  .growing-word .growth-leaf-shape { opacity: 1; transform: none; }
+  .growing-word .growth-leaf-vein { opacity: 0.7; }
 }
