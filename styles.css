@@ -448,17 +448,6 @@ h3 { font-size: 22px; line-height: 1.15; }
 .command-row button { min-height: 39px; padding: 0 11px; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: #e8e3db; background: rgba(255,255,255,0.05); font-size: 10px; cursor: pointer; }
 .install-disclosure { margin: 0; padding: 0 22px 22px; color: #8f8a82; font-size: 10px; }
 
-.faq-section { background: var(--surface); }
-.faq-layout { display: grid; grid-template-columns: minmax(280px, 0.65fr) minmax(570px, 1.35fr); gap: 100px; }
-.faq-list { border-top: 1px solid var(--line-strong); }
-.faq-list details { border-bottom: 1px solid var(--line-strong); }
-.faq-list summary { position: relative; padding: 25px 44px 25px 0; list-style: none; font-size: 15px; font-weight: 680; cursor: pointer; }
-.faq-list summary::-webkit-details-marker { display: none; }
-.faq-list summary::before, .faq-list summary::after { content: ""; position: absolute; top: 50%; right: 3px; width: 13px; height: 1px; background: var(--ink-soft); transition: transform 160ms ease; }
-.faq-list summary::after { transform: rotate(90deg); }
-.faq-list details[open] summary::after { transform: rotate(0); }
-.faq-list details p { max-width: 700px; margin: -6px 0 25px; padding-right: 40px; color: var(--muted); font-size: 13px; line-height: 1.65; }
-
 .site-footer { min-height: 110px; border-top: 1px solid var(--line); background: #f0eee9; }
 .footer-inner { min-height: 110px; display: flex; align-items: center; gap: 24px; }
 .brand-small { font-size: 17px; }
@@ -492,7 +481,7 @@ h3 { font-size: 22px; line-height: 1.15; }
   .node-start, .node-finish { width: 112px; }
   .arch-inspector { grid-template-columns: 95px 190px 1fr; }
   .inspector-hint { display: none; }
-  .planning-layout, .typical-layout, .faq-layout { gap: 60px; }
+  .planning-layout, .typical-layout { gap: 60px; }
   .evidence-workspace { grid-template-columns: .9fr 1.1fr; }
   .arch-option { grid-template-columns: 230px 1fr 180px; gap: 35px; }
   .arch-glyph { width: 180px; }
@@ -522,7 +511,7 @@ h3 { font-size: 22px; line-height: 1.15; }
   .run-card { width: min(100%, 540px); justify-self: center; }
   .mini-flow { min-height: 128px; }
   .mini-node { width: 100px; }
-  .split-heading, .planning-layout, .typical-layout, .faq-layout { grid-template-columns: 1fr; gap: 35px; }
+  .split-heading, .planning-layout, .typical-layout { grid-template-columns: 1fr; gap: 35px; }
   .arch-workspace { height: auto; min-height: 0; padding: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .arch-routes { display: none; }
   .arch-node { position: relative; left: auto; top: auto; width: 100%; min-height: 102px; transform: none; }
@@ -598,7 +587,6 @@ h3 { font-size: 22px; line-height: 1.15; }
   .command-row { align-items: stretch; flex-direction: column; }
   .command-row code { width: 100%; font-size: 10px; }
   .install-disclosure { padding-inline: 16px; }
-  .faq-list summary { font-size: 14px; }
   .footer-inner { padding: 28px 0; flex-wrap: wrap; }
   .footer-inner > p { width: 100%; order: 3; }
   .footer-inner nav { margin-left: auto; gap: 14px; }
