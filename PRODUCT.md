@@ -28,7 +28,7 @@ Download the latest compatible GitHub Release. If no public release exists, say 
 ## Brand and visual authority
 
 - Preserve the Garden seedling logo.
-- Use Garden's application typography: Avenir Next where available, then the operating system's UI font.
+- Use the self-hosted Inter variable font throughout, with the operating system's UI font as a fallback.
 - Use the application's actual palette and component language: warm neutral surfaces, restrained orange, soft green evidence states, thin rules and rounded utility controls.
 - The editable Arch is the product's distinctive visual mechanism.
 - Rebuild or transplant useful interface pieces as web-native HTML, CSS and SVG. Do not place whole screenshots into decorative frames, stretch them, or use them as background scenery.

@@ -20,24 +20,25 @@ colors:
   terminal: "#edf3ef"
 typography:
   display:
-    fontFamily: '"Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", sans-serif'
+    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", sans-serif'
     fontSize: "clamp(52px, 6vw, 86px)"
-    fontWeight: 680
+    fontWeight: 700
     lineHeight: 0.98
-    letterSpacing: "-0.036em"
+    letterSpacing: "-0.04em"
   headline:
-    fontFamily: '"Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", sans-serif'
+    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", sans-serif'
     fontSize: "clamp(40px, 4.6vw, 64px)"
-    fontWeight: 660
+    fontWeight: 680
     lineHeight: 1.02
-    letterSpacing: "-0.036em"
+    letterSpacing: "-0.04em"
   body:
-    fontFamily: '"Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", sans-serif'
+    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", sans-serif'
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.5
+    letterSpacing: "-0.01em"
   label:
-    fontFamily: '"Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", sans-serif'
+    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", sans-serif'
     fontSize: "11px"
     fontWeight: 760
     lineHeight: 1.2
@@ -143,9 +144,10 @@ Garden uses warm neutrals for structure, orange for action, green for evidence, 
 
 ## Typography
 
-**Display Font:** Avenir Next with native system UI fallbacks  
-**Body Font:** Avenir Next with native system UI fallbacks  
-**Label/Mono Font:** SFMono-Regular with Consolas and Liberation Mono fallbacks
+**Display Font:** Self-hosted Inter variable with native system UI fallbacks<br>
+**Body Font:** Self-hosted Inter variable with native system UI fallbacks<br>
+**Label Font:** Self-hosted Inter variable with native system UI fallbacks<br>
+**Mono Font:** SFMono-Regular with Consolas and Liberation Mono fallbacks
 
 **Character:** One application-led sans serif voice keeps the site direct and familiar. Tight headline spacing supplies authority without introducing an editorial display style.
 
@@ -160,7 +162,7 @@ Garden uses warm neutrals for structure, orange for action, green for evidence, 
 
 ### Named Rules
 
-**The Application Type Rule.** Use the Garden system stack for all interface and marketing copy. Monospace is reserved for commands and code.
+**The Application Type Rule.** Use self-hosted Inter for all interface and marketing copy. Monospace is reserved for commands and code.
 
 ## Layout
 
@@ -206,7 +208,7 @@ Agent, gate, terminal, and user-decision nodes use code-built HTML and SVG route
 
 ### Do:
 
-- **Do** use the application font stack, palette, node types, routes, and control language.
+- **Do** use self-hosted Inter, the application palette, node types, routes, and control language.
 - **Do** present product behaviour as semantic HTML, CSS, and SVG.
 - **Do** keep the request -> plan -> Arch -> evidence sequence legible on every viewport.
 - **Do** reserve orange for action and green for evidence.
