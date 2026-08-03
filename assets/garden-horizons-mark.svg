@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title desc">
-  <title id="title">Garden Horizons</title>
+  <title id="title">garden horizons</title>
   <desc id="desc">Three broken horizons flow across rain, plant, and soil layers.</desc>
   <defs>
     <linearGradient id="rain" x1="17" y1="0" x2="83" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#315A7A"/><stop offset="1" stop-color="#7FA5BA"/></linearGradient>

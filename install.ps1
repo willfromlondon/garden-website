@@ -5,10 +5,10 @@ $asset = $release.assets | Where-Object { $_.name -match '\.msi$' } | Select-Obj
 if (-not $asset) {
   $asset = $release.assets | Where-Object { $_.name -match '(setup|installer).*\.exe$|\.exe$' } | Select-Object -First 1
 }
-if (-not $asset) { throw "The latest Garden release does not include a Windows installer." }
+if (-not $asset) { throw "The latest garden release does not include a Windows installer." }
 $extension = [IO.Path]::GetExtension($asset.name)
 $installer = Join-Path ([IO.Path]::GetTempPath()) ("garden-installer" + $extension)
-Write-Host "Downloading Garden $($release.tag_name)..."
+Write-Host "Downloading garden $($release.tag_name)..."
 Invoke-WebRequest -Uri $asset.browser_download_url -OutFile $installer
 try {
   if ($extension -eq ".msi") {

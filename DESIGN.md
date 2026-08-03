@@ -1,5 +1,5 @@
 ---
-name: Garden
+name: garden
 description: Application-led design for structured agent workflows
 colors:
   ink: "#292825"
@@ -98,13 +98,13 @@ components:
     padding: "20px"
 ---
 
-# Design System: Garden
+# Design System: garden
 
 ## Overview
 
 **Creative North Star: "The Working Run"**
 
-Garden looks like the desktop application in use: warm, precise, and operational. The system explains the product through code-built HTML, CSS, and SVG components, with the request -> plan -> Arch -> evidence sequence as its central visual grammar. Marketing surfaces borrow the application's controls, nodes, routes, status treatments, and ordinary language without turning them into decorative screenshots.
+garden looks like the desktop application in use: warm, precise, and operational. The system explains the product through code-built HTML, CSS, and SVG components, with the request -> plan -> Arch -> evidence sequence as its central visual grammar. Marketing surfaces borrow the application's controls, nodes, routes, status treatments, and ordinary language without turning them into decorative screenshots.
 
 **Key Characteristics:**
 
@@ -116,11 +116,11 @@ Garden looks like the desktop application in use: warm, precise, and operational
 
 ## Colors
 
-Garden uses warm neutrals for structure, orange for action, green for evidence, and blue only as a supporting graph accent.
+garden uses warm neutrals for structure, orange for action, green for evidence, and blue only as a supporting graph accent.
 
 ### Primary
 
-- **Garden Orange:** Primary buttons, active tabs, selected nodes, ports, and section labels.
+- **garden orange:** Primary buttons, active tabs, selected nodes, ports, and section labels.
 - **Deep Orange:** Hover states and text links that need stronger contrast.
 - **Pale Orange:** Icons, counts, and low-emphasis action markers.
 
@@ -185,7 +185,7 @@ Controls use compact rounded corners from 8px to 12px. Product cards use 15px to
 ### Buttons
 
 - **Shape:** Compact utility control with a 10px radius and 42px default height.
-- **Primary:** White text on Garden Orange with a restrained warm shadow.
+- **Primary:** White text on garden orange with a restrained warm shadow.
 - **Secondary:** Warm white surface, thin border, and Deep Ink text.
 - **Hover / Focus:** A 1px lift on hover and a 3px translucent orange focus outline.
 

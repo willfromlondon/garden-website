@@ -54,7 +54,7 @@ async function configureDownloads() {
 
   const platform = detectPlatform();
   const readablePlatform = platformName(platform);
-  labels.forEach((label) => { label.textContent = platform === "unknown" ? "Download Garden" : `Download for ${readablePlatform}`; });
+  labels.forEach((label) => { label.textContent = platform === "unknown" ? "Download garden" : `Download for ${readablePlatform}`; });
 
   try {
     const response = await fetch(RELEASE_API, { headers: { Accept: "application/vnd.github+json" } });

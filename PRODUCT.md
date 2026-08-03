@@ -2,11 +2,11 @@
 
 ## Platform
 
-Web marketing and download site for the Garden desktop application.
+Web marketing and download site for the garden desktop application.
 
 ## Product
 
-Garden is an agent harness for long-horizon software development. It lets a developer build an agent workflow as an editable graph called an Arch, run that Arch against a real project, review evidence, and decide whether staged changes reach the project.
+garden is an agent harness for long-horizon software development. It lets a developer build an agent workflow as an editable graph called an Arch, run that Arch against a real project, review evidence, and decide whether staged changes reach the project.
 
 ## Audience
 
@@ -15,9 +15,9 @@ Developers who already use Codex, Claude Code or local models and want more stru
 ## What the website must explain
 
 - An Arch connects agents, gates, loops and user decisions.
-- Garden turns the user's request into a task plan that can be revised before agents start.
+- garden turns the user's request into a task plan that can be revised before agents start.
 - Different models can build, review, repair and recheck the same work.
-- Garden pauses at a User Gate when a person needs to decide.
+- garden pauses at a User Gate when a person needs to decide.
 - Agent changes remain staged until the user keeps or bins them.
 - The completed run records evidence, changed files, model usage and completed nodes.
 
@@ -27,7 +27,7 @@ Download the latest compatible GitHub Release. If no public release exists, say 
 
 ## Brand and visual authority
 
-- Preserve the Garden seedling logo.
+- Preserve the garden seedling logo.
 - Use the self-hosted Inter variable font throughout, with the operating system's UI font as a fallback.
 - Use the application's actual palette and component language: warm neutral surfaces, restrained orange, soft green evidence states, thin rules and rounded utility controls.
 - The editable Arch is the product's distinctive visual mechanism.
@@ -36,7 +36,7 @@ Download the latest compatible GitHub Release. If no public release exists, say 
 
 ## Voice
 
-Direct, specific and ordinary. Explain what Garden does and how a run works. No inflated claims, poetic section headings, coy privacy copy, faux-technical annotations or self-important slogans. No em dashes.
+Direct, specific and ordinary. Explain what garden does and how a run works. No inflated claims, poetic section headings, coy privacy copy, faux-technical annotations or self-important slogans. No em dashes.
 
 ## Evidence
 

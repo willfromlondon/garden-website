@@ -1,4 +1,4 @@
-# Garden website
+# garden website
 
 The static website for [garden.engineering](https://garden.engineering).
 

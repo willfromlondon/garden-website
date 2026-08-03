@@ -25,10 +25,10 @@ case "$os" in
       *) url="$(asset_url '\.(dmg)$.*(x64|x86_64)|((x64|x86_64).*)?\.dmg$')" ;;
     esac
     [ -n "$url" ] || url="$(asset_url '\.dmg$')"
-    [ -n "$url" ] || { echo "The latest Garden release does not include a macOS installer." >&2; exit 1; }
+    [ -n "$url" ] || { echo "The latest garden release does not include a macOS installer." >&2; exit 1; }
     file="${TMPDIR:-/tmp}/garden-installer.dmg"
     curl -fL "$url" -o "$file"
-    echo "Garden has been downloaded to $file. Open it to install Garden."
+    echo "garden has been downloaded to $file. Open it to install garden."
     open "$file"
     ;;
   Linux)
@@ -38,14 +38,14 @@ case "$os" in
       mkdir -p "${HOME}/.local/bin"
       curl -fL "$url" -o "$target"
       chmod +x "$target"
-      echo "Garden installed at $target"
+      echo "garden installed at $target"
       exit 0
     fi
     url="$(asset_url '\.deb$')"
-    [ -n "$url" ] || { echo "The latest Garden release does not include a Linux installer." >&2; exit 1; }
+    [ -n "$url" ] || { echo "The latest garden release does not include a Linux installer." >&2; exit 1; }
     file="${TMPDIR:-/tmp}/garden-installer.deb"
     curl -fL "$url" -o "$file"
-    echo "Garden has been downloaded to $file. Install it with: sudo apt install $file"
+    echo "garden has been downloaded to $file. Install it with: sudo apt install $file"
     ;;
-  *) echo "Garden does not have an installer for $os." >&2; exit 1 ;;
+  *) echo "garden does not have an installer for $os." >&2; exit 1 ;;
 esac
