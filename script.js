@@ -386,6 +386,23 @@ function configureStickyHeader() {
   window.addEventListener("scroll", update, { passive: true });
 }
 
+function configureGroveAnimation() {
+  const grove = document.querySelector("[data-grove-animation]");
+  const panel = grove?.closest(".project-panel");
+  if (!grove || !panel || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let visible = false;
+  const update = () => panel.classList.toggle("is-running", visible && !document.hidden);
+  const observer = new IntersectionObserver((entries) => {
+    visible = entries.some((entry) => entry.isIntersecting);
+    update();
+  }, { rootMargin: "120px 0px", threshold: 0.2 });
+
+  panel.classList.add("can-animate");
+  observer.observe(panel);
+  document.addEventListener("visibilitychange", update);
+}
+
 function configureArchMarquee() {
   const marquee = document.querySelector("[data-arch-marquee]");
   const toggle = document.querySelector("[data-arch-marquee-toggle]");
@@ -425,6 +442,7 @@ configureArchDemo();
 configureCommandTabs();
 configureHeroGrowth();
 configureRunAnimation();
+configureGroveAnimation();
 configureStickyHeader();
 configureArchMarquee();
 configureDownloads();

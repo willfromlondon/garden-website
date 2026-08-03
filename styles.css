@@ -348,7 +348,9 @@ h3 { font-size: 22px; font-weight: 650; line-height: 1.15; }
 .project-toolbar > div { display: flex; flex-direction: column; gap: 3px; }
 .project-toolbar strong { font-size: 13px; }
 .watching { margin-left: 3px; color: var(--green); font-size: 9px; }
-.file-tally { margin-left: auto; color: var(--muted); font-size: 9px; }
+.file-tally { min-width: 190px; margin-left: auto; display: grid; color: var(--muted); font-size: 9px; text-align: right; }
+.tally-state { grid-area: 1 / 1; }
+.tally-baseline, .tally-changes, .tally-first-file { opacity: 0; }
 .file-tally b { color: #5c9568; }
 .file-tally em { color: #b66c4e; font-style: normal; }
 .file-grove { position: relative; height: 360px; margin: 0 16px; }
@@ -374,6 +376,48 @@ h3 { font-size: 22px; font-weight: 650; line-height: 1.15; }
 .grove-joint.mark-dark, .grove-dot.mark-dark { fill: #345b4b; }
 .grove-tree.kind-added .grove-spine { stroke: #6faa63; }
 .grove-tree.kind-added .grove-apex, .grove-tree.kind-added .grove-base { fill: #6faa63; }
+.grove-spine-change { stroke-width: 3.2; stroke-linecap: square; }
+.grove-spine-change.mark-growth { stroke: #72ad69; }
+.grove-spine-change.mark-removal { stroke: #b5541f; }
+.grove-change-removed .grove-branch, .grove-change-removed .grove-box { stroke: #b5541f; }
+.grove-change-removed :is(.grove-dot, .grove-joint) { fill: #b5541f; }
+.grove-measure-sweep { opacity: 0; stroke: var(--orange); stroke-width: 5; stroke-linecap: square; stroke-dasharray: .06 1; filter: drop-shadow(0 0 3px rgb(196 75 30 / .6)); }
+.project-panel.can-animate { --grove-cycle: 12s; --grove-play-state: paused; }
+.project-panel.can-animate.is-running { --grove-play-state: running; }
+.project-panel.can-animate :is(.file-grove, .file-tally) { animation: grove-loop-veil var(--grove-cycle) linear infinite; }
+.project-panel.can-animate .grove-modified :is(.grove-branch, .grove-box).mark-growth { animation: grove-added-stroke var(--grove-cycle) linear infinite; }
+.project-panel.can-animate .grove-modified :is(.grove-dot, .grove-joint).mark-growth { animation: grove-added-fill var(--grove-cycle) linear infinite; }
+.project-panel.can-animate .grove-change-removed :is(.grove-branch, .grove-box) { animation: grove-removed-stroke var(--grove-cycle) linear infinite; }
+.project-panel.can-animate .grove-change-removed :is(.grove-dot, .grove-joint) { animation: grove-removed-fill var(--grove-cycle) linear infinite; }
+.project-panel.can-animate .grove-spine-change { animation: grove-spine-change-in var(--grove-cycle) linear infinite; }
+.project-panel.can-animate .grove-measure-sweep { animation: grove-measure-column var(--grove-cycle) ease-out infinite; }
+.project-panel.can-animate .grove-added-one { transform-box: fill-box; transform-origin: center bottom; animation: grove-column-added-one var(--grove-cycle) cubic-bezier(.2,.82,.3,1) infinite; }
+.project-panel.can-animate .grove-added-two { transform-box: fill-box; transform-origin: center bottom; animation: grove-column-added-two var(--grove-cycle) cubic-bezier(.2,.82,.3,1) infinite; }
+.project-panel.can-animate .grove-dependency-one { animation: grove-dependency-one var(--grove-cycle) ease-out infinite; }
+.project-panel.can-animate .grove-dependency-two { animation: grove-dependency-two var(--grove-cycle) ease-out infinite; }
+.project-panel.can-animate .grove-dependency-three { animation: grove-dependency-three var(--grove-cycle) ease-out infinite; }
+.project-panel.can-animate .tally-baseline { animation: grove-tally-baseline var(--grove-cycle) linear infinite; }
+.project-panel.can-animate .tally-changes { animation: grove-tally-changes var(--grove-cycle) linear infinite; }
+.project-panel.can-animate .tally-first-file { animation: grove-tally-first-file var(--grove-cycle) linear infinite; }
+.project-panel.can-animate .tally-complete { animation: grove-tally-complete var(--grove-cycle) linear infinite; }
+.project-panel.can-animate :is(.file-grove, .file-tally, .grove-branch, .grove-box, .grove-dot, .grove-joint, .grove-spine-change, .grove-measure-sweep, .grove-added-one, .grove-added-two, .grove-dependency-new, .tally-state) { animation-play-state: var(--grove-play-state); }
+
+@keyframes grove-loop-veil { 0% { opacity: 0; } 2%, 94% { opacity: 1; } 97%, 100% { opacity: 0; } }
+@keyframes grove-added-stroke { 0%, 13.9% { stroke: #879a8f; opacity: 1; } 14% { stroke: #72ad69; } 16.1% { stroke: #72ad69; opacity: .34; } 18.7%, 100% { stroke: #72ad69; opacity: 1; } }
+@keyframes grove-added-fill { 0%, 13.9% { fill: #879a8f; opacity: 1; } 14% { fill: #72ad69; } 16.1% { fill: #72ad69; opacity: .34; } 18.7%, 100% { fill: #72ad69; opacity: 1; } }
+@keyframes grove-removed-stroke { 0%, 13.9% { stroke: #345b4b; opacity: 1; } 14% { stroke: #b5541f; } 16.1% { stroke: #b5541f; opacity: .34; } 18.7%, 100% { stroke: #b5541f; opacity: 1; } }
+@keyframes grove-removed-fill { 0%, 13.9% { fill: #345b4b; opacity: 1; } 14% { fill: #b5541f; } 16.1% { fill: #b5541f; opacity: .34; } 18.7%, 100% { fill: #b5541f; opacity: 1; } }
+@keyframes grove-spine-change-in { 0%, 14% { opacity: 0; } 16.2%, 100% { opacity: 1; } }
+@keyframes grove-measure-column { 0%, 14% { opacity: 0; stroke-dashoffset: .06; } 15.2% { opacity: .9; } 20.5%, 100% { opacity: 0; stroke-dashoffset: -1; } }
+@keyframes grove-column-added-one { 0%, 28% { opacity: 0; transform: scaleY(0); } 32.4%, 100% { opacity: 1; transform: scaleY(1); } }
+@keyframes grove-column-added-two { 0%, 42% { opacity: 0; transform: scaleY(0); } 46.4%, 100% { opacity: 1; transform: scaleY(1); } }
+@keyframes grove-dependency-one { 0%, 32.4% { opacity: 0; } 35.9%, 100% { opacity: .5; } }
+@keyframes grove-dependency-two { 0%, 46.4% { opacity: 0; } 49.9%, 100% { opacity: .5; } }
+@keyframes grove-dependency-three { 0%, 49.5% { opacity: 0; } 53%, 100% { opacity: .5; } }
+@keyframes grove-tally-baseline { 0%, 13% { opacity: 1; } 16%, 100% { opacity: 0; } }
+@keyframes grove-tally-changes { 0%, 14%, 30%, 100% { opacity: 0; } 17%, 27% { opacity: 1; } }
+@keyframes grove-tally-first-file { 0%, 29%, 54%, 100% { opacity: 0; } 32%, 51% { opacity: 1; } }
+@keyframes grove-tally-complete { 0%, 51% { opacity: 0; } 54%, 100% { opacity: 1; } }
 .project-legend { min-height: 48px; padding: 0 17px; display: flex; align-items: center; gap: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
 .project-legend i { width: 7px; height: 7px; display: inline-block; margin-right: 4px; border: 1px solid #879089; }
 .project-legend .legend-added { border-color: #76b36f; }
@@ -443,7 +487,18 @@ h3 { font-size: 22px; font-weight: 650; line-height: 1.15; }
 @keyframes arch-marquee-right { from { transform: translateX(-100%); } to { transform: translateX(0); } }
 
 .download-section { padding: 86px 0; background: #f8f7f3; }
-.download-panel { min-height: 430px; padding: 62px; display: grid; grid-template-columns: minmax(330px, 0.85fr) minmax(500px, 1.15fr); align-items: center; gap: 90px; border: 1px solid var(--line); border-radius: 24px; background: var(--ink); color: #f9f6f0; box-shadow: var(--shadow-large); }
+.download-panel { position: relative; isolation: isolate; overflow: hidden; min-height: 430px; padding: 62px; display: grid; grid-template-columns: minmax(330px, 0.85fr) minmax(500px, 1.15fr); align-items: center; gap: 90px; border: 1px solid var(--line); border-radius: 24px; background: var(--ink); color: #f9f6f0; box-shadow: var(--shadow-large); }
+.download-botanicals { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.download-botanicals-mobile { display: none; }
+.download-botanicals .botanical-lines { fill: none; stroke: currentColor; stroke-width: 1.05; stroke-linecap: round; stroke-linejoin: round; opacity: .24; }
+.download-botanicals .botanical-sage { color: var(--green-soft); }
+.download-botanicals .botanical-stone { color: var(--surface-alt); opacity: .17; }
+.download-botanicals .botanical-leaves use { fill: currentColor; fill-opacity: .18; stroke-width: .8; }
+.download-botanicals .botanical-seeds { stroke-width: .8; }
+.download-botanicals .botanical-flowers { color: var(--orange); stroke: currentColor; }
+.download-botanicals .botanical-flowers circle { fill: currentColor; stroke: none; }
+.download-botanicals .botanical-petals use { fill: none; stroke: currentColor; stroke-width: .9; }
+.download-copy, .install-box { position: relative; z-index: 1; }
 .download-copy .eyebrow { color: #e59a79; }
 .download-copy h2 { max-width: 520px; }
 .download-copy > p:not(.eyebrow):not(.download-note) { max-width: 500px; margin: 20px 0 28px; color: #c7c3bb; font-size: 16px; }
@@ -593,6 +648,8 @@ h3 { font-size: 22px; font-weight: 650; line-height: 1.15; }
   .arch-library-tile { width: 280px; min-height: 194px; padding: 21px 22px 15px; }
   .download-section { padding: 14px 0; background: var(--ink); }
   .download-panel { width: 100%; padding: 68px 18px; border: 0; border-radius: 0; gap: 44px; box-shadow: none; }
+  .download-botanicals-desktop { display: none; }
+  .download-botanicals-mobile { display: block; }
   .download-copy .button { width: 100%; }
   .command-panel { padding: 16px; }
   .command-row { align-items: stretch; flex-direction: column; }

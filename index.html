@@ -267,11 +267,11 @@
         </article>
 
         <article class="project-panel">
-          <div class="project-toolbar"><div><span class="component-label">Project structure</span><strong>Project graph</strong></div><span class="watching"><i></i> Watching</span><span class="file-tally">7 files · <b>+84</b> <em>−17</em> · 9 dependencies</span></div>
-          <div class="file-grove" aria-label="Project files and their dependencies">
+          <div class="project-toolbar"><div><span class="component-label">Project structure</span><strong>Project graph</strong></div><span class="watching"><i></i> Watching</span><span class="file-tally" aria-label="The completed example contains 7 files, 84 additions, 17 removals and 9 dependencies"><span class="tally-state tally-baseline" aria-hidden="true">5 files · <b>+0</b> <em>−0</em> · 6 dependencies</span><span class="tally-state tally-changes" aria-hidden="true">5 files · <b>+44</b> <em>−17</em> · 6 dependencies</span><span class="tally-state tally-first-file" aria-hidden="true">6 files · <b>+62</b> <em>−17</em> · 7 dependencies</span><span class="tally-state tally-complete" aria-hidden="true">7 files · <b>+84</b> <em>−17</em> · 9 dependencies</span></span></div>
+          <div class="file-grove" aria-label="Project files and their dependencies" data-grove-animation>
             <svg viewBox="0 0 760 360" role="img" aria-labelledby="grove-title grove-description">
               <title id="grove-title">garden project grove</title>
-              <desc id="grove-description">Seven project files shown as structural trees, with changed units on their branches and dependency arrows beneath the ground line.</desc>
+              <desc id="grove-description">Five existing project files receive added and removed code, then two new files and their dependencies appear.</desc>
               <defs>
                 <marker id="dependency-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse">
                   <path d="M1 1 7 4 1 7"/>
@@ -282,26 +282,29 @@
               <g class="grove-dependencies">
                 <path d="M60 278C60 322 218 322 265 278"/>
                 <path d="M160 278C160 311 235 311 265 278"/>
-                <path d="M265 278C265 327 425 327 480 278"/>
-                <path d="M375 278C375 314 445 314 480 278"/>
-                <path d="M480 278C480 326 650 326 690 278"/>
+                <path class="grove-dependency-new grove-dependency-one" d="M265 278C265 327 425 327 480 278"/>
+                <path class="grove-dependency-new grove-dependency-two" d="M375 278C375 314 445 314 480 278"/>
+                <path class="grove-dependency-new grove-dependency-three" d="M480 278C480 326 650 326 690 278"/>
                 <path d="M590 278C590 307 663 307 690 278"/>
               </g>
 
-              <g class="grove-tree">
+              <g class="grove-tree grove-modified">
                 <text class="grove-label" x="60" y="24" text-anchor="middle">project.ts</text>
                 <line class="grove-label-leader" x1="60" y1="31" x2="60" y2="92"/>
                 <line class="grove-spine" x1="60" y1="98" x2="60" y2="278"/>
+                <line class="grove-spine-change mark-growth" x1="60" y1="132" x2="60" y2="151"/>
+                <line class="grove-spine-change mark-removal" x1="60" y1="185" x2="60" y2="202"/>
+                <line class="grove-measure-sweep" x1="60" y1="98" x2="60" y2="278" pathLength="1"/>
                 <circle class="grove-apex" cx="60" cy="98" r="3"/><circle class="grove-base" cx="60" cy="278" r="5.5"/>
                 <path class="grove-branch mark-sage" d="M60 119H46V115H39"/><circle class="grove-joint mark-sage" cx="46" cy="119" r="1.6"/><circle class="grove-dot mark-sage" cx="39" cy="115" r="2.2"/>
                 <path class="grove-branch mark-growth" d="M60 141H74"/><circle class="grove-dot mark-growth" cx="74" cy="141" r="2.3"/>
                 <path class="grove-branch mark-blue" d="M60 166H43V172H35"/><circle class="grove-joint mark-blue" cx="43" cy="166" r="1.6"/><rect class="grove-box mark-blue" x="31" y="168" width="8" height="8" rx="1"/>
-                <path class="grove-branch mark-dark" d="M60 194H78"/><circle class="grove-dot mark-dark" cx="78" cy="194" r="2.3"/>
+                <g class="grove-change-removed"><path class="grove-branch mark-dark" d="M60 194H78"/><circle class="grove-dot mark-dark" cx="78" cy="194" r="2.3"/></g>
                 <path class="grove-branch mark-growth" d="M60 221H44"/><circle class="grove-dot mark-growth" cx="44" cy="221" r="2.2"/>
                 <path class="grove-branch mark-sage" d="M60 246H72V241H80"/><circle class="grove-joint mark-sage" cx="72" cy="246" r="1.6"/><circle class="grove-dot mark-sage" cx="80" cy="241" r="2.1"/>
               </g>
 
-              <g class="grove-tree kind-added">
+              <g class="grove-tree kind-added grove-added-one">
                 <text class="grove-label" x="160" y="43" text-anchor="middle">export.ts</text>
                 <line class="grove-label-leader" x1="160" y1="50" x2="160" y2="116"/>
                 <line class="grove-spine" x1="160" y1="122" x2="160" y2="278"/>
@@ -312,24 +315,29 @@
                 <path class="grove-branch mark-growth" d="M160 248H174"/><circle class="grove-dot mark-growth" cx="174" cy="248" r="2.2"/>
               </g>
 
-              <g class="grove-tree">
+              <g class="grove-tree grove-modified">
                 <text class="grove-label" x="265" y="20" text-anchor="middle">commands.rs</text>
                 <line class="grove-label-leader" x1="265" y1="27" x2="265" y2="82"/>
                 <line class="grove-spine" x1="265" y1="88" x2="265" y2="278"/>
+                <line class="grove-spine-change mark-removal" x1="265" y1="143" x2="265" y2="160"/>
+                <line class="grove-spine-change mark-growth" x1="265" y1="188" x2="265" y2="209"/>
+                <line class="grove-measure-sweep" x1="265" y1="88" x2="265" y2="278" pathLength="1"/>
                 <circle class="grove-apex" cx="265" cy="88" r="3"/><circle class="grove-base" cx="265" cy="278" r="5.5"/>
                 <path class="grove-branch mark-dark" d="M265 109H247V104H238"/><circle class="grove-joint mark-dark" cx="247" cy="109" r="1.6"/><rect class="grove-box mark-dark" x="233" y="99" width="10" height="10" rx="1"/>
                 <path class="grove-branch mark-sage" d="M265 129H283"/><rect class="grove-box mark-sage" x="279" y="125" width="8" height="8" rx="1"/>
-                <path class="grove-branch mark-blue" d="M265 151H247V157H238"/><circle class="grove-joint mark-blue" cx="247" cy="151" r="1.6"/><rect class="grove-box mark-blue" x="233" y="152" width="10" height="10" rx="1"/>
+                <g class="grove-change-removed"><path class="grove-branch mark-blue" d="M265 151H247V157H238"/><circle class="grove-joint mark-blue" cx="247" cy="151" r="1.6"/><rect class="grove-box mark-blue" x="233" y="152" width="10" height="10" rx="1"/></g>
                 <path class="grove-branch mark-dark" d="M265 174H286V168H294"/><circle class="grove-joint mark-dark" cx="286" cy="174" r="1.6"/><rect class="grove-box mark-dark" x="290" y="164" width="8" height="8" rx="1"/>
                 <path class="grove-branch mark-growth" d="M265 198H244"/><circle class="grove-dot mark-growth" cx="244" cy="198" r="2.4"/>
                 <path class="grove-branch mark-dark" d="M265 221H282V227H291"/><circle class="grove-joint mark-dark" cx="282" cy="221" r="1.6"/><rect class="grove-box mark-dark" x="286" y="222" width="10" height="10" rx="1"/>
                 <path class="grove-branch mark-sage" d="M265 247H248"/><circle class="grove-dot mark-sage" cx="248" cy="247" r="2.2"/>
               </g>
 
-              <g class="grove-tree">
+              <g class="grove-tree grove-modified">
                 <text class="grove-label" x="375" y="55" text-anchor="middle">menu.ts</text>
                 <line class="grove-label-leader" x1="375" y1="62" x2="375" y2="127"/>
                 <line class="grove-spine" x1="375" y1="133" x2="375" y2="278"/>
+                <line class="grove-spine-change mark-growth" x1="375" y1="149" x2="375" y2="172"/>
+                <line class="grove-measure-sweep" x1="375" y1="133" x2="375" y2="278" pathLength="1"/>
                 <circle class="grove-apex" cx="375" cy="133" r="3"/><circle class="grove-base" cx="375" cy="278" r="5.5"/>
                 <path class="grove-branch mark-growth" d="M375 158H359V164H351"/><circle class="grove-joint mark-growth" cx="359" cy="158" r="1.6"/><rect class="grove-box mark-growth" x="347" y="160" width="8" height="8" rx="1"/>
                 <path class="grove-branch mark-sage" d="M375 186H392"/><circle class="grove-dot mark-sage" cx="392" cy="186" r="2.3"/>
@@ -337,7 +345,7 @@
                 <path class="grove-branch mark-dark" d="M375 248H390V243H397"/><circle class="grove-joint mark-dark" cx="390" cy="248" r="1.6"/><circle class="grove-dot mark-dark" cx="397" cy="243" r="2.2"/>
               </g>
 
-              <g class="grove-tree kind-added">
+              <g class="grove-tree kind-added grove-added-two">
                 <text class="grove-label" x="480" y="33" text-anchor="middle">export.test.ts</text>
                 <line class="grove-label-leader" x1="480" y1="40" x2="480" y2="105"/>
                 <line class="grove-spine" x1="480" y1="111" x2="480" y2="278"/>
@@ -350,10 +358,12 @@
                 <path class="grove-branch mark-growth" d="M480 248H499V254H508"/><circle class="grove-joint mark-growth" cx="499" cy="248" r="1.6"/><rect class="grove-box mark-growth" x="503" y="249" width="10" height="10" rx="1"/>
               </g>
 
-              <g class="grove-tree">
+              <g class="grove-tree grove-modified">
                 <text class="grove-label" x="590" y="20" text-anchor="middle">Cargo.toml</text>
                 <line class="grove-label-leader" x1="590" y1="27" x2="590" y2="94"/>
                 <line class="grove-spine" x1="590" y1="100" x2="590" y2="278"/>
+                <line class="grove-spine-change mark-growth" x1="590" y1="218" x2="590" y2="238"/>
+                <line class="grove-measure-sweep" x1="590" y1="100" x2="590" y2="278" pathLength="1"/>
                 <circle class="grove-apex" cx="590" cy="100" r="3"/><circle class="grove-base" cx="590" cy="278" r="5.5"/>
                 <path class="grove-branch mark-dark" d="M590 124H574"/><circle class="grove-dot mark-dark" cx="574" cy="124" r="2.3"/>
                 <path class="grove-branch mark-sage" d="M590 149H608V144H616"/><circle class="grove-joint mark-sage" cx="608" cy="149" r="1.6"/><circle class="grove-dot mark-sage" cx="616" cy="144" r="2.2"/>
@@ -363,16 +373,19 @@
                 <path class="grove-branch mark-sage" d="M590 250H607"/><circle class="grove-dot mark-sage" cx="607" cy="250" r="2.2"/>
               </g>
 
-              <g class="grove-tree">
+              <g class="grove-tree grove-modified">
                 <text class="grove-label" x="690" y="43" text-anchor="middle">lib.rs</text>
                 <line class="grove-label-leader" x1="690" y1="50" x2="690" y2="114"/>
                 <line class="grove-spine" x1="690" y1="120" x2="690" y2="278"/>
+                <line class="grove-spine-change mark-growth" x1="690" y1="190" x2="690" y2="209"/>
+                <line class="grove-spine-change mark-removal" x1="690" y1="213" x2="690" y2="232"/>
+                <line class="grove-measure-sweep" x1="690" y1="120" x2="690" y2="278" pathLength="1"/>
                 <circle class="grove-apex" cx="690" cy="120" r="3"/><circle class="grove-base" cx="690" cy="278" r="5.5"/>
                 <path class="grove-branch mark-dark" d="M690 139H671V134H662"/><circle class="grove-joint mark-dark" cx="671" cy="139" r="1.6"/><rect class="grove-box mark-dark" x="657" y="129" width="10" height="10" rx="1"/>
                 <path class="grove-branch mark-sage" d="M690 158H708"/><circle class="grove-dot mark-sage" cx="708" cy="158" r="2.3"/>
                 <path class="grove-branch mark-blue" d="M690 179H670"/><rect class="grove-box mark-blue" x="666" y="175" width="8" height="8" rx="1"/>
                 <path class="grove-branch mark-growth" d="M690 200H711V195H719"/><circle class="grove-joint mark-growth" cx="711" cy="200" r="1.6"/><circle class="grove-dot mark-growth" cx="719" cy="195" r="2.2"/>
-                <path class="grove-branch mark-dark" d="M690 221H668V227H659"/><circle class="grove-joint mark-dark" cx="668" cy="221" r="1.6"/><rect class="grove-box mark-dark" x="654" y="222" width="10" height="10" rx="1"/>
+                <g class="grove-change-removed"><path class="grove-branch mark-dark" d="M690 221H668V227H659"/><circle class="grove-joint mark-dark" cx="668" cy="221" r="1.6"/><rect class="grove-box mark-dark" x="654" y="222" width="10" height="10" rx="1"/></g>
                 <path class="grove-branch mark-sage" d="M690 244H709"/><circle class="grove-dot mark-sage" cx="709" cy="244" r="2.3"/>
                 <path class="grove-branch mark-dark" d="M690 263H673"/><rect class="grove-box mark-dark" x="669" y="259" width="8" height="8" rx="1"/>
               </g>
@@ -554,6 +567,87 @@
 
     <section class="section download-section" id="download" aria-labelledby="download-title">
       <div class="download-panel page-width">
+        <svg class="download-botanicals download-botanicals-desktop" viewBox="0 0 1240 430" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs>
+            <path id="download-leaf" d="M0 0C5-11 15-15 24-11C20-1 10 5 0 0Z"/>
+            <path id="download-narrow-leaf" d="M0 0C3-14 9-22 14-24C15-12 10-3 0 0Z"/>
+            <path id="download-petal" d="M0 0C-5-7-3-14 2-17C7-12 7-5 0 0Z"/>
+          </defs>
+
+          <g class="botanical-lines botanical-sage botanical-fern">
+            <path d="M-20 432C22 382 50 327 69 266C88 207 108 155 149 112"/>
+            <path d="M44 340C23 326 8 306 0 283M55 313C29 291 20 268 17 244M65 284C44 259 40 234 43 210M77 251C58 224 59 197 65 174M90 218C75 190 80 165 90 142M105 183C96 157 103 135 119 119"/>
+            <path d="M49 330C79 329 99 316 113 294M59 303C91 301 116 284 128 260M69 273C101 267 125 247 137 222M81 239C110 230 132 207 140 183M94 205C119 194 136 173 141 148"/>
+            <g class="botanical-leaves">
+              <use href="#download-leaf" transform="translate(43 339) rotate(204) scale(.72)"/><use href="#download-leaf" transform="translate(55 312) rotate(212) scale(.68)"/><use href="#download-leaf" transform="translate(65 282) rotate(220) scale(.64)"/><use href="#download-leaf" transform="translate(77 249) rotate(226) scale(.59)"/><use href="#download-leaf" transform="translate(91 216) rotate(232) scale(.53)"/>
+              <use href="#download-leaf" transform="translate(50 329) rotate(-18) scale(.77)"/><use href="#download-leaf" transform="translate(61 301) rotate(-25) scale(.73)"/><use href="#download-leaf" transform="translate(71 271) rotate(-32) scale(.68)"/><use href="#download-leaf" transform="translate(83 237) rotate(-40) scale(.62)"/><use href="#download-leaf" transform="translate(96 202) rotate(-48) scale(.55)"/>
+            </g>
+          </g>
+
+          <g class="botanical-lines botanical-stone botanical-grasses">
+            <path d="M232 0C246 57 245 115 229 178M270-12C277 57 273 119 252 188M310-8C294 55 291 118 302 176M346-18C323 45 318 101 329 158"/>
+            <path d="M229 57C212 45 205 29 207 14M248 88C266 73 274 55 273 35M298 70C280 55 273 37 276 18M325 52C343 38 351 21 350 3"/>
+            <g class="botanical-seeds">
+              <path d="M225 1l-8 19m13-16 1 21m6-18 9 18M306 0l-7 18m13-15 1 20m7-16 8 17"/>
+            </g>
+          </g>
+
+          <g class="botanical-lines botanical-sage botanical-yarrow">
+            <path d="M506 449C523 381 534 310 531 235C529 190 539 145 569 109M530 266C499 240 484 210 486 175M532 233C559 207 575 174 576 140M521 327C490 310 470 282 465 250M527 298C555 279 573 252 581 222"/>
+            <path d="M568 110C550 94 548 75 561 63M568 109C575 86 589 70 609 65M570 109C591 99 611 100 627 112M560 91C540 83 524 87 512 100M588 84C598 67 614 59 632 62"/>
+            <g class="botanical-leaves">
+              <use href="#download-narrow-leaf" transform="translate(520 325) rotate(245) scale(.8)"/><use href="#download-narrow-leaf" transform="translate(527 297) rotate(28) scale(.75)"/><use href="#download-narrow-leaf" transform="translate(529 265) rotate(238) scale(.7)"/><use href="#download-narrow-leaf" transform="translate(534 231) rotate(32) scale(.66)"/>
+            </g>
+            <g class="botanical-flowers">
+              <circle cx="560" cy="63" r="3"/><circle cx="609" cy="65" r="3"/><circle cx="627" cy="112" r="3"/><circle cx="512" cy="100" r="3"/><circle cx="632" cy="62" r="3"/>
+              <circle cx="570" cy="103" r="2"/><circle cx="582" cy="91" r="2"/><circle cx="548" cy="88" r="2"/><circle cx="596" cy="108" r="2"/>
+            </g>
+          </g>
+
+          <g class="botanical-lines botanical-stone botanical-branch">
+            <path d="M806-16C828 34 849 65 889 87C931 111 969 104 1000 80C1024 61 1051 53 1090 57C1130 61 1161 50 1190 21"/>
+            <path d="M889 87C873 62 871 39 881 18M942 102C932 77 935 54 950 34M998 81C980 59 978 39 987 21M1057 55C1047 33 1050 15 1061-3M1122 56C1112 35 1116 17 1128 2"/>
+            <g class="botanical-leaves">
+              <use href="#download-leaf" transform="translate(885 80) rotate(230) scale(.58)"/><use href="#download-leaf" transform="translate(938 98) rotate(238) scale(.72)"/><use href="#download-leaf" transform="translate(994 76) rotate(220) scale(.62)"/><use href="#download-leaf" transform="translate(1053 51) rotate(235) scale(.7)"/><use href="#download-leaf" transform="translate(1118 52) rotate(230) scale(.6)"/>
+            </g>
+          </g>
+
+          <g class="botanical-lines botanical-sage botanical-wildflowers">
+            <path d="M1010 447C1042 401 1051 348 1044 288C1039 247 1049 210 1076 178M1080 441C1098 385 1099 329 1081 275C1069 238 1072 205 1092 171M1160 443C1144 385 1147 332 1176 284C1194 254 1201 218 1194 176M1228 432C1206 385 1206 342 1227 303"/>
+            <path d="M1045 307C1019 294 1003 273 997 246M1047 277C1066 256 1076 233 1076 205M1085 294C1110 278 1124 255 1127 226M1171 294C1144 278 1130 254 1128 224M1191 229C1170 214 1160 193 1161 168M1221 319C1199 305 1188 284 1190 260"/>
+            <g class="botanical-leaves">
+              <use href="#download-leaf" transform="translate(1044 306) rotate(216) scale(.62)"/><use href="#download-leaf" transform="translate(1048 277) rotate(18) scale(.68)"/><use href="#download-leaf" transform="translate(1085 293) rotate(-20) scale(.58)"/><use href="#download-leaf" transform="translate(1171 293) rotate(210) scale(.7)"/><use href="#download-leaf" transform="translate(1191 228) rotate(218) scale(.56)"/><use href="#download-leaf" transform="translate(1221 318) rotate(208) scale(.64)"/>
+            </g>
+            <g class="botanical-flowers botanical-petals">
+              <g transform="translate(1077 176)"><use href="#download-petal"/><use href="#download-petal" transform="rotate(72)"/><use href="#download-petal" transform="rotate(144)"/><use href="#download-petal" transform="rotate(216)"/><use href="#download-petal" transform="rotate(288)"/><circle r="2.5"/></g>
+              <g transform="translate(1093 170) scale(.8)"><use href="#download-petal"/><use href="#download-petal" transform="rotate(72)"/><use href="#download-petal" transform="rotate(144)"/><use href="#download-petal" transform="rotate(216)"/><use href="#download-petal" transform="rotate(288)"/><circle r="2.5"/></g>
+              <g transform="translate(1194 175) scale(.9)"><use href="#download-petal"/><use href="#download-petal" transform="rotate(72)"/><use href="#download-petal" transform="rotate(144)"/><use href="#download-petal" transform="rotate(216)"/><use href="#download-petal" transform="rotate(288)"/><circle r="2.5"/></g>
+            </g>
+          </g>
+        </svg>
+
+        <svg class="download-botanicals download-botanicals-mobile" viewBox="0 0 390 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs>
+            <path id="download-mobile-leaf" d="M0 0C5-11 15-15 24-11C20-1 10 5 0 0Z"/>
+            <path id="download-mobile-petal" d="M0 0C-5-7-3-14 2-17C7-12 7-5 0 0Z"/>
+          </defs>
+          <g class="botanical-lines botanical-sage botanical-fern">
+            <path d="M-18 729C14 665 38 604 48 535C56 475 72 425 108 387"/>
+            <path d="M39 595C17 577 7 553 5 526M45 562C68 553 84 537 94 515M50 529C27 507 20 481 23 454M58 493C82 480 98 459 104 432M71 457C54 435 54 413 63 394"/>
+            <g class="botanical-leaves"><use href="#download-mobile-leaf" transform="translate(39 594) rotate(215) scale(.66)"/><use href="#download-mobile-leaf" transform="translate(45 560) rotate(-26) scale(.7)"/><use href="#download-mobile-leaf" transform="translate(51 527) rotate(222) scale(.62)"/><use href="#download-mobile-leaf" transform="translate(60 491) rotate(-38) scale(.64)"/><use href="#download-mobile-leaf" transform="translate(72 455) rotate(230) scale(.56)"/></g>
+          </g>
+          <g class="botanical-lines botanical-stone botanical-grasses">
+            <path d="M282-18C270 46 272 104 291 158M324-20C306 48 308 111 331 174M367-12C340 45 340 99 361 145"/>
+            <path d="M286 92C264 77 255 56 258 35M328 107C348 91 357 69 354 45"/>
+          </g>
+          <g class="botanical-lines botanical-sage botanical-wildflowers">
+            <path d="M286 742C303 680 303 622 287 567C276 530 281 495 307 464M345 735C329 676 332 621 359 571C375 542 380 510 373 475"/>
+            <path d="M289 590C267 575 256 553 257 528M298 536C319 519 329 496 327 473M356 581C334 564 323 542 324 518"/>
+            <g class="botanical-leaves"><use href="#download-mobile-leaf" transform="translate(290 589) rotate(215) scale(.62)"/><use href="#download-mobile-leaf" transform="translate(298 535) rotate(20) scale(.66)"/><use href="#download-mobile-leaf" transform="translate(356 580) rotate(216) scale(.68)"/></g>
+            <g class="botanical-flowers botanical-petals"><g transform="translate(307 463) scale(.85)"><use href="#download-mobile-petal"/><use href="#download-mobile-petal" transform="rotate(72)"/><use href="#download-mobile-petal" transform="rotate(144)"/><use href="#download-mobile-petal" transform="rotate(216)"/><use href="#download-mobile-petal" transform="rotate(288)"/><circle r="2.5"/></g><g transform="translate(373 474) scale(.75)"><use href="#download-mobile-petal"/><use href="#download-mobile-petal" transform="rotate(72)"/><use href="#download-mobile-petal" transform="rotate(144)"/><use href="#download-mobile-petal" transform="rotate(216)"/><use href="#download-mobile-petal" transform="rotate(288)"/><circle r="2.5"/></g></g>
+          </g>
+        </svg>
+
         <div class="download-copy">
           <p class="eyebrow">Open source · MIT</p>
           <h2 id="download-title">Download garden.</h2>
