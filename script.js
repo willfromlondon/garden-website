@@ -392,7 +392,11 @@ function configureGroveAnimation() {
   if (!grove || !panel || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   let visible = false;
-  const update = () => panel.classList.toggle("is-running", visible && !document.hidden);
+  const update = () => {
+    const active = visible && !document.hidden;
+    panel.classList.toggle("is-running", active);
+    if (active && !panel.classList.contains("is-playing")) panel.classList.add("is-playing");
+  };
   const observer = new IntersectionObserver((entries) => {
     visible = entries.some((entry) => entry.isIntersecting);
     update();
@@ -401,6 +405,11 @@ function configureGroveAnimation() {
   panel.classList.add("can-animate");
   observer.observe(panel);
   document.addEventListener("visibilitychange", update);
+  grove.addEventListener("animationend", (event) => {
+    if (event.target !== grove || event.animationName !== "grove-cycle") return;
+    panel.classList.remove("is-playing");
+    window.requestAnimationFrame(() => window.requestAnimationFrame(update));
+  });
 }
 
 function configureArchMarquee() {

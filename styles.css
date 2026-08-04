@@ -94,8 +94,10 @@ code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
   justify-content: space-between;
   gap: 30px;
 }
-.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 21px; font-weight: 700; letter-spacing: -0.035em; }
-.brand img { filter: drop-shadow(0 3px 7px rgba(16, 32, 25, 0.12)); }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 21px; font-weight: 700; line-height: 1; letter-spacing: -0.035em; }
+.brand img { display: block; }
+.site-header .brand { gap: 3px; font-size: 20px; font-weight: 680; line-height: 1; letter-spacing: -0.032em; }
+.site-header .brand img { width: 34px; height: 34px; }
 .site-nav { display: flex; align-items: center; gap: 25px; color: var(--ink-soft); font-size: 13px; font-weight: 450; letter-spacing: -0.012em; }
 .site-nav > a:not(.button) { text-decoration: none; transition: color 140ms ease; }
 .site-nav > a:not(.button):hover { color: var(--orange); }
@@ -350,7 +352,7 @@ h3 { font-size: 22px; font-weight: 650; line-height: 1.15; }
 .watching { margin-left: 3px; color: var(--green); font-size: 9px; }
 .file-tally { min-width: 190px; margin-left: auto; display: grid; color: var(--muted); font-size: 9px; text-align: right; }
 .tally-state { grid-area: 1 / 1; }
-.tally-baseline, .tally-changes, .tally-first-file { opacity: 0; }
+.tally-state:not(.tally-complete) { opacity: 0; }
 .file-tally b { color: #5c9568; }
 .file-tally em { color: #b66c4e; font-style: normal; }
 .file-grove { position: relative; height: 360px; margin: 0 16px; }
@@ -382,42 +384,59 @@ h3 { font-size: 22px; font-weight: 650; line-height: 1.15; }
 .grove-change-removed .grove-branch, .grove-change-removed .grove-box { stroke: #b5541f; }
 .grove-change-removed :is(.grove-dot, .grove-joint) { fill: #b5541f; }
 .grove-measure-sweep { opacity: 0; stroke: var(--orange); stroke-width: 5; stroke-linecap: square; stroke-dasharray: .06 1; filter: drop-shadow(0 0 3px rgb(196 75 30 / .6)); }
-.project-panel.can-animate { --grove-cycle: 12s; --grove-play-state: paused; }
+.project-panel.can-animate { --grove-play-state: paused; }
 .project-panel.can-animate.is-running { --grove-play-state: running; }
-.project-panel.can-animate :is(.file-grove, .file-tally) { animation: grove-loop-veil var(--grove-cycle) linear infinite; }
-.project-panel.can-animate .grove-modified :is(.grove-branch, .grove-box).mark-growth { animation: grove-added-stroke var(--grove-cycle) linear infinite; }
-.project-panel.can-animate .grove-modified :is(.grove-dot, .grove-joint).mark-growth { animation: grove-added-fill var(--grove-cycle) linear infinite; }
-.project-panel.can-animate .grove-change-removed :is(.grove-branch, .grove-box) { animation: grove-removed-stroke var(--grove-cycle) linear infinite; }
-.project-panel.can-animate .grove-change-removed :is(.grove-dot, .grove-joint) { animation: grove-removed-fill var(--grove-cycle) linear infinite; }
-.project-panel.can-animate .grove-spine-change { animation: grove-spine-change-in var(--grove-cycle) linear infinite; }
-.project-panel.can-animate .grove-measure-sweep { animation: grove-measure-column var(--grove-cycle) ease-out infinite; }
-.project-panel.can-animate .grove-added-one { transform-box: fill-box; transform-origin: center bottom; animation: grove-column-added-one var(--grove-cycle) cubic-bezier(.2,.82,.3,1) infinite; }
-.project-panel.can-animate .grove-added-two { transform-box: fill-box; transform-origin: center bottom; animation: grove-column-added-two var(--grove-cycle) cubic-bezier(.2,.82,.3,1) infinite; }
-.project-panel.can-animate .grove-dependency-one { animation: grove-dependency-one var(--grove-cycle) ease-out infinite; }
-.project-panel.can-animate .grove-dependency-two { animation: grove-dependency-two var(--grove-cycle) ease-out infinite; }
-.project-panel.can-animate .grove-dependency-three { animation: grove-dependency-three var(--grove-cycle) ease-out infinite; }
-.project-panel.can-animate .tally-baseline { animation: grove-tally-baseline var(--grove-cycle) linear infinite; }
-.project-panel.can-animate .tally-changes { animation: grove-tally-changes var(--grove-cycle) linear infinite; }
-.project-panel.can-animate .tally-first-file { animation: grove-tally-first-file var(--grove-cycle) linear infinite; }
-.project-panel.can-animate .tally-complete { animation: grove-tally-complete var(--grove-cycle) linear infinite; }
-.project-panel.can-animate :is(.file-grove, .file-tally, .grove-branch, .grove-box, .grove-dot, .grove-joint, .grove-spine-change, .grove-measure-sweep, .grove-added-one, .grove-added-two, .grove-dependency-new, .tally-state) { animation-play-state: var(--grove-play-state); }
+.project-panel.can-animate:not(.is-playing) :is(.file-grove, .file-tally) { opacity: 0; }
+.project-panel.can-animate .grove-modified :is(.grove-branch, .grove-box).mark-growth { stroke: #879a8f; }
+.project-panel.can-animate .grove-modified :is(.grove-dot, .grove-joint).mark-growth { fill: #879a8f; }
+.project-panel.can-animate .grove-change-removed :is(.grove-branch, .grove-box) { stroke: #345b4b; }
+.project-panel.can-animate .grove-change-removed :is(.grove-dot, .grove-joint) { fill: #345b4b; }
+.project-panel.can-animate .grove-spine-change, .project-panel.can-animate .grove-dependency-new, .project-panel.can-animate :is(.grove-added-one, .grove-added-two) { opacity: 0; }
+.project-panel.can-animate .grove-added-one, .project-panel.can-animate .grove-added-two { transform-box: fill-box; transform-origin: center bottom; transform: scaleY(0); }
+.change-early, .sweep-early { --change-delay: 1.4s; }
+.grove-added-one { --change-delay: 3.2s; }
+.change-trim-one, .sweep-trim-one { --change-delay: 5.2s; }
+.grove-added-two { --change-delay: 7.1s; }
+.change-trim-two, .sweep-trim-two { --change-delay: 9s; }
+.change-final, .sweep-final { --change-delay: 10.4s; }
+.grove-dependency-one { --change-delay: 3.75s; }
+.grove-dependency-two { --change-delay: 7.65s; }
+.grove-dependency-three { --change-delay: 10.45s; }
+.project-panel.can-animate.is-playing :is(.file-grove, .file-tally) { animation: grove-cycle 16s linear both; }
+.project-panel.can-animate.is-playing .grove-modified :is(.grove-branch, .grove-box).mark-growth { animation: grove-added-stroke 560ms ease-out var(--change-delay) forwards; }
+.project-panel.can-animate.is-playing .grove-modified :is(.grove-dot, .grove-joint).mark-growth { animation: grove-added-fill 560ms ease-out var(--change-delay) forwards; }
+.project-panel.can-animate.is-playing .grove-change-removed :is(.grove-branch, .grove-box) { animation: grove-removed-stroke 560ms ease-out var(--change-delay) forwards; }
+.project-panel.can-animate.is-playing .grove-change-removed :is(.grove-dot, .grove-joint) { animation: grove-removed-fill 560ms ease-out var(--change-delay) forwards; }
+.project-panel.can-animate.is-playing .grove-spine-change { animation: grove-spine-change-in 260ms ease-out var(--change-delay) forwards; }
+.project-panel.can-animate.is-playing .grove-measure-sweep { animation: grove-measure-column 780ms ease-out var(--change-delay) both; }
+.project-panel.can-animate.is-playing :is(.grove-added-one, .grove-added-two) { animation: grove-column-added 520ms cubic-bezier(.2,.82,.3,1) var(--change-delay) forwards; }
+.project-panel.can-animate.is-playing .grove-dependency-new { animation: grove-dependency-in 420ms ease-out var(--change-delay) forwards; }
+.project-panel.can-animate.is-playing .tally-baseline { animation: grove-tally-baseline 16s linear both; }
+.project-panel.can-animate.is-playing .tally-early { animation: grove-tally-early 16s linear both; }
+.project-panel.can-animate.is-playing .tally-first-file { animation: grove-tally-first-file 16s linear both; }
+.project-panel.can-animate.is-playing .tally-first-trim { animation: grove-tally-first-trim 16s linear both; }
+.project-panel.can-animate.is-playing .tally-second-file { animation: grove-tally-second-file 16s linear both; }
+.project-panel.can-animate.is-playing .tally-second-trim { animation: grove-tally-second-trim 16s linear both; }
+.project-panel.can-animate.is-playing .tally-complete { animation: grove-tally-complete 16s linear both; }
+.project-panel.can-animate.is-playing :is(.file-grove, .file-tally, .grove-branch, .grove-box, .grove-dot, .grove-joint, .grove-spine-change, .grove-measure-sweep, .grove-added-one, .grove-added-two, .grove-dependency-new, .tally-state) { animation-play-state: var(--grove-play-state); }
 
-@keyframes grove-loop-veil { 0% { opacity: 0; } 2%, 94% { opacity: 1; } 97%, 100% { opacity: 0; } }
-@keyframes grove-added-stroke { 0%, 13.9% { stroke: #879a8f; opacity: 1; } 14% { stroke: #72ad69; } 16.1% { stroke: #72ad69; opacity: .34; } 18.7%, 100% { stroke: #72ad69; opacity: 1; } }
-@keyframes grove-added-fill { 0%, 13.9% { fill: #879a8f; opacity: 1; } 14% { fill: #72ad69; } 16.1% { fill: #72ad69; opacity: .34; } 18.7%, 100% { fill: #72ad69; opacity: 1; } }
-@keyframes grove-removed-stroke { 0%, 13.9% { stroke: #345b4b; opacity: 1; } 14% { stroke: #b5541f; } 16.1% { stroke: #b5541f; opacity: .34; } 18.7%, 100% { stroke: #b5541f; opacity: 1; } }
-@keyframes grove-removed-fill { 0%, 13.9% { fill: #345b4b; opacity: 1; } 14% { fill: #b5541f; } 16.1% { fill: #b5541f; opacity: .34; } 18.7%, 100% { fill: #b5541f; opacity: 1; } }
-@keyframes grove-spine-change-in { 0%, 14% { opacity: 0; } 16.2%, 100% { opacity: 1; } }
-@keyframes grove-measure-column { 0%, 14% { opacity: 0; stroke-dashoffset: .06; } 15.2% { opacity: .9; } 20.5%, 100% { opacity: 0; stroke-dashoffset: -1; } }
-@keyframes grove-column-added-one { 0%, 28% { opacity: 0; transform: scaleY(0); } 32.4%, 100% { opacity: 1; transform: scaleY(1); } }
-@keyframes grove-column-added-two { 0%, 42% { opacity: 0; transform: scaleY(0); } 46.4%, 100% { opacity: 1; transform: scaleY(1); } }
-@keyframes grove-dependency-one { 0%, 32.4% { opacity: 0; } 35.9%, 100% { opacity: .5; } }
-@keyframes grove-dependency-two { 0%, 46.4% { opacity: 0; } 49.9%, 100% { opacity: .5; } }
-@keyframes grove-dependency-three { 0%, 49.5% { opacity: 0; } 53%, 100% { opacity: .5; } }
-@keyframes grove-tally-baseline { 0%, 13% { opacity: 1; } 16%, 100% { opacity: 0; } }
-@keyframes grove-tally-changes { 0%, 14%, 30%, 100% { opacity: 0; } 17%, 27% { opacity: 1; } }
-@keyframes grove-tally-first-file { 0%, 29%, 54%, 100% { opacity: 0; } 32%, 51% { opacity: 1; } }
-@keyframes grove-tally-complete { 0%, 51% { opacity: 0; } 54%, 100% { opacity: 1; } }
+@keyframes grove-cycle { 0% { opacity: 0; } 2%, 94% { opacity: 1; } 97%, 100% { opacity: 0; } }
+@keyframes grove-added-stroke { 0% { stroke: #72ad69; } 45% { opacity: .34; } 100% { stroke: #72ad69; opacity: 1; } }
+@keyframes grove-added-fill { 0% { fill: #72ad69; } 45% { opacity: .34; } 100% { fill: #72ad69; opacity: 1; } }
+@keyframes grove-removed-stroke { 0% { stroke: #b5541f; } 45% { opacity: .34; } 100% { stroke: #b5541f; opacity: 1; } }
+@keyframes grove-removed-fill { 0% { fill: #b5541f; } 45% { opacity: .34; } 100% { fill: #b5541f; opacity: 1; } }
+@keyframes grove-spine-change-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes grove-measure-column { 0% { opacity: 0; stroke-dashoffset: .06; } 18% { opacity: .9; } 100% { opacity: 0; stroke-dashoffset: -1; } }
+@keyframes grove-column-added { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
+@keyframes grove-column-added-mobile { from { opacity: 0; } to { opacity: 1; } }
+@keyframes grove-dependency-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes grove-tally-baseline { 0%, 8.5% { opacity: 1; } 10%, 100% { opacity: 0; } }
+@keyframes grove-tally-early { 0%, 8.5%, 21%, 100% { opacity: 0; } 10%, 19.5% { opacity: 1; } }
+@keyframes grove-tally-first-file { 0%, 19.5%, 34%, 100% { opacity: 0; } 21%, 32% { opacity: 1; } }
+@keyframes grove-tally-first-trim { 0%, 32%, 46%, 100% { opacity: 0; } 34%, 44% { opacity: 1; } }
+@keyframes grove-tally-second-file { 0%, 44%, 57.5%, 100% { opacity: 0; } 46%, 55.5% { opacity: 1; } }
+@keyframes grove-tally-second-trim { 0%, 55.5%, 67%, 100% { opacity: 0; } 57.5%, 65% { opacity: 1; } }
+@keyframes grove-tally-complete { 0%, 65% { opacity: 0; } 67%, 100% { opacity: 1; } }
 .project-legend { min-height: 48px; padding: 0 17px; display: flex; align-items: center; gap: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
 .project-legend i { width: 7px; height: 7px; display: inline-block; margin-right: 4px; border: 1px solid #879089; }
 .project-legend .legend-added { border-color: #76b36f; }
@@ -602,8 +621,8 @@ h3 { font-size: 22px; font-weight: 650; line-height: 1.15; }
   .hero-copy h1 { font-size: clamp(43px, 12vw, 54px); }
   .growth-drawing { left: -12%; width: 124%; }
   h2 { font-size: clamp(37px, 10vw, 49px); }
-  .brand { font-size: 19px; }
-  .brand img { width: 35px; height: 35px; }
+  .site-header .brand { font-size: 19px; }
+  .site-header .brand img { width: 32px; height: 32px; }
   .hero { padding-top: 58px; }
   .hero-intro > p:first-child { font-size: 18px; }
   .hero-actions { align-items: stretch; flex-direction: column; }
@@ -637,6 +656,8 @@ h3 { font-size: 22px; font-weight: 650; line-height: 1.15; }
   .project-toolbar { padding: 0 12px; }
   .watching { display: none; }
   .file-grove { height: auto; min-height: 0; aspect-ratio: 760 / 360; margin-inline: 8px; overflow: hidden; }
+  .project-panel.can-animate :is(.grove-added-one, .grove-added-two) { transform: none; }
+  .project-panel.can-animate.is-playing :is(.grove-added-one, .grove-added-two) { animation-name: grove-column-added-mobile; }
   .project-legend { padding-inline: 11px; gap: 9px; flex-wrap: wrap; }
   .typical-layout { gap: 28px; }
   .run-list li { grid-template-columns: 40px 1fr; gap: 10px; }
